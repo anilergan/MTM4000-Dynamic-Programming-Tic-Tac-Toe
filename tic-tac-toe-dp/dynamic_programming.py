@@ -45,7 +45,16 @@ class DP(MDP):
                 if state in self.t_states:
                     self.values[state] = self.reward_function(state)
                     continue
-            
+                    
+                # First let's evaluate the transitions well. First make s_primes as a list and push it into transition function. Remember to adjust transition function appropriate for that. 
+
+                s_prime_list = []
+                for s_prime in super().possible_next_states(state, self.actions[state]):
+                    s_prime_list.append(s_prime)
+                
+                transition_dictionary = super().transition_function(s_prime_list)
+
+
 
                 for s_prime in super().possible_next_states(state, self.actions[state]): # state as a list & action as a list
                     # The sum of the values of the new states that can be reached after taking an action 

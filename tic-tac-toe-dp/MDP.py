@@ -104,9 +104,9 @@ class MDP(play_tic_tac_toe):
         """
         The probability of each action that can be taken for a given state
         """
-        reward = self.reward_function(s_prime)
-        if reward:
-            return 1
+        if type(s_prime) is list:
+            
+
         # if the game is over, return 0
 
         # Return the each possible state possibility
