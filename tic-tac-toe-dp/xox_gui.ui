@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>600</width>
+     <height>700</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>600</width>
+     <height>700</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#frame_content {
+	background-color: rgb(250,251,255);
+}
+
+#frame_menu {
+background-color: rgb(242, 244, 250);
+
+}
+
+#frame_game {
+background-color: rgb(239, 239, 239);
+border-radius: 20px
+}</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame_menu">
+      <property name="minimumSize">
+       <size>
+        <width>600</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>600</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_content">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>600</width>
+        <height>600</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>600</width>
+        <height>600</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="frame_game">
+         <property name="minimumSize">
+          <size>
+           <width>570</width>
+           <height>570</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>570</width>
+           <height>570</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#frame_game {
+background-color: rgb(20,124,236);
+
+}
+QFrame {
+background-color: rgb(250,251,255, 255);
+}
+
+#frame_cell_11 {border-top-left-radius: 10px;}
+#frame_cell_13 {border-top-right-radius: 10px;}
+#frame_cell_31 {border-bottom-left-radius: 10px;}
+#frame_cell_33 {border-bottom-right-radius: 10px;}
+
+QRadioButton {
+width: 100px;
+height: 100px;
+
+}
+QRadioButton::indicator {
+width: 160px; /* İşaret kutusunun genişliği */
+height: 160px; /* İşaret kutusunun yüksekliği */
+border: None;
+}
+
+
+QRadioButton::indicator:checked {
+  image: url(&quot;:/icons/o.png&quot;);
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0" columnstretch="0,0,0,0,0">
+          <property name="leftMargin">
+           <number>8</number>
+          </property>
+          <property name="topMargin">
+           <number>8</number>
+          </property>
+          <property name="rightMargin">
+           <number>8</number>
+          </property>
+          <property name="bottomMargin">
+           <number>8</number>
+          </property>
+          <property name="spacing">
+           <number>7</number>
+          </property>
+          <item row="1" column="4">
+           <widget class="QFrame" name="frame_cell_23">
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="QRadioButton" name="mark_23">
+               <property name="text">
+                <string>RadioButton</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QFrame" name="frame_cell_22">
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <widget class="QRadioButton" name="mark_22">
+               <property name="text">
+                <string>RadioButton</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QFrame" name="frame_cell_12">
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QRadioButton" name="mark_12">
+               <property name="text">
+                <string>RadioButton</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QFrame" name="frame_cell_13">
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QRadioButton" name="mark_13">
+               <property name="text">
+                <string>RadioButton</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QFrame" name="frame_cell_11">
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QRadioButton" name="mark_11">
+               <property name="styleSheet">
+                <string notr="true">marrgin-right:10px;</string>
+               </property>
+               <property name="text">
+                <string>RadioButton</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QFrame" name="frame_cell_21">
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QRadioButton" name="mark_21">
+               <property name="text">
+                <string>RadioButton</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <widget class="QFrame" name="frame_cell_32">
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_10">
+             <item>
+              <widget class="QRadioButton" name="mark_32">
+               <property name="text">
+                <string>RadioButton</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="4">
+           <widget class="QFrame" name="frame_cell_33">
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <item>
+              <widget class="QRadioButton" name="mark_33">
+               <property name="text">
+                <string>RadioButton</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QFrame" name="frame_cell_31">
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>180</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QRadioButton" name="mark_31">
+               <property name="text">
+                <string>RadioButton</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="gui.qrc"/>
+ </resources>
+ <connections/>
+</ui>

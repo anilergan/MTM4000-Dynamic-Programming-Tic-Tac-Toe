@@ -69,7 +69,7 @@ class play_tic_tac_toe(tic_tac_toe):
         else: 
             try: board = np.array(board).reshape(3,3)
             except: 
-                raise Exception('Board could not be transform into np array in the shape of 3x3.\n Board: {board}')  
+                raise Exception(f'Board could not be transform into np array in the shape of 3x3.\n Board: {board}')  
 
 
         if check_two_win == False:

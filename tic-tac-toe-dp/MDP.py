@@ -100,17 +100,24 @@ class MDP(play_tic_tac_toe):
 
 
 
-    def transition_function(self, s_prime):
+    def transition_function(self, state, all_s_primes):
         """
         The probability of each action that can be taken for a given state
         """
-        if type(s_prime) is list:
-            
+        ultimate_action = False
+        for s_prime in all_s_primes:
+            if self.reward_function(s_prime): ultimate_action = True
+        
+        # If rival has a action which wins the game, rival make that action, indeed!
+        if ultimate_action:
+            for s_prime in all_s_primes:
+                if self.reward_function(s_prime):
+                    return 1
+                else:
+                    return 0
+        else: 
+            return 1 / (len(self.actions[state]) - 1)
 
-        # if the game is over, return 0
-
-        # Return the each possible state possibility
-        else: return 1/(len(self.actions[s_prime])+1)
 
 
     def possible_next_states(self, state, action):
@@ -127,36 +134,25 @@ class MDP(play_tic_tac_toe):
         # [0,0,1,1,2,2,0,0,1] = [0,1,6,7]
         # state = [0,0,1,1,2,2,0,0,1]
         
-        if type(action) is int:
-            s_a[action] = self.mark # State + My Action
-            # ex [[m  O  X]   
-            #     [X  O  O]
-            #     [m  m  X]]
-            # [0,2,1,1,2,2,0,0,1] = [0,1*,6,7]
-            # s_a = [0,2,1,1,2,2,0,0,1]
 
-            if super().win(s_a): return [] # If I win the game after my action, there is no possible s_a_a for rival.
-            
-            all_possible_s_a_a = [] # State + My Action + Rival Action -> Possible States (s_a_a)
-            for indx, cell in enumerate(s_a):
-                s_a_a = s_a.copy()
-                if cell == 0:
-                    s_a_a[indx] = rival_mark
-                    all_possible_s_a_a.append(tuple(s_a_a))
+        s_a[action] = self.mark # State + My Action
+        # ex [[m  O  X]   
+        #     [X  O  O]
+        #     [m  m  X]]
+        # [0,2,1,1,2,2,0,0,1] = [0,1*,6,7]
+        # s_a = [0,2,1,1,2,2,0,0,1]
+
+        if super().win(s_a): return [1]
+        elif s_a.count(0) == 0: return [] # If I win the game after my action or the game ends draw, there is no possible s_a_a for rival.
+        
+        all_possible_s_a_a = [] # State + My Action + Rival Action -> Possible States (s_a_a)
+        for indx, cell in enumerate(s_a):
+            s_a_a = s_a.copy()
+            if cell == 0:
+                s_a_a[indx] = rival_mark
+                all_possible_s_a_a.append(tuple(s_a_a))
         
 
-        elif type(action) is list:
-            all_possible_s_a_a = []
-            for a in action:
-                s_a[a] = self.mark 
-                if s_a.count(0) == 0 or super().win(s_a): all_possible_s_a_a.append(tuple(s_a))
-                else:
-                    for indx, cell in enumerate(s_a):
-                        s_a_a = s_a.copy()
-                        if cell == 0:
-                            s_a_a[indx] = rival_mark
-                            all_possible_s_a_a.append(tuple(s_a_a))
-                s_a[a] = 0
         
         return all_possible_s_a_a
 

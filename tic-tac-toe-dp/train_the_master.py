@@ -19,7 +19,7 @@ def define_an_agent(mark):
 
     policy_str_keys = {str(key): value for key, value in the_master.policy.items()}
 
-    with open(f"tic-tac-toe-dp\policies\policy_iteration_{mark}2.json", 'w') as json_file:
+    with open(f"tic-tac-toe-dp\policies\policy_iteration_{mark}.json", 'w') as json_file:
         json.dump(policy_str_keys, json_file)
     
 

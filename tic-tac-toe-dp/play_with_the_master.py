@@ -4,7 +4,6 @@ import numpy as np
 import json, ast
 
 class the_master(computer):
-
     def __init__(self): # random mark is selected for now
         super().__init__() 
         self.play()
@@ -29,7 +28,7 @@ class the_master(computer):
         if mark_num == 1: mark = 'X'
         elif mark_num ==2: mark = 'O'
         
-        policy_path = f"tic-tac-toe-dp\policies\policy_iteration_{mark}2.json"
+        policy_path = f"tic-tac-toe-dp\policies\policy_iteration_{mark}.json"
 
         with open(policy_path, 'r') as file:
             policy_json = file.read()

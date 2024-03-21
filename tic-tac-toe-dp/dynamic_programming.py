@@ -20,6 +20,9 @@ class DP(MDP):
         self.policy = {}
         self.initialize_P()
 
+        self.resumption = 0
+
+
 
     def initialize_V(self):
         for state in self.states:
@@ -46,91 +49,116 @@ class DP(MDP):
                     self.values[state] = self.reward_function(state)
                     continue
                     
-                # First let's evaluate the transitions well. First make s_primes as a list and push it into transition function. Remember to adjust transition function appropriate for that. 
+                # First let's evaluate the transitions well. First make s_primes as a list and push it into transition function. Remember to adjust transition function appropriate for that.
 
-                s_prime_list = []
-                for s_prime in super().possible_next_states(state, self.actions[state]):
-                    s_prime_list.append(s_prime)
                 
-                transition_dictionary = super().transition_function(s_prime_list)
+                for action in self.actions[state]:
+                    all_s_primes = []
+                    for s_prime in super().possible_next_states(state, action):
+                        if s_prime == () or s_prime == 1: 
+                            continue
+                        else:
+                            all_s_primes.append(s_prime)
 
-
-
-                for s_prime in super().possible_next_states(state, self.actions[state]): # state as a list & action as a list
-                    # The sum of the values of the new states that can be reached after taking an action 
-
-                    if s_prime in self.t_states: # There is no s_prime, so it means I won the game after I had taken the action 
-                        self.values[state] = super().reward_function(s_prime)
-            
-                    
-                    else: 
-                    
-                        self.values[state]
-                        self.values[s_prime]
-
-                        self.values[state] += super().transition_function(state)* (super().reward_function(state) + self.gamma * self.values[s_prime])  
+                for action in self.actions[state]:
+                    for s_prime in super().possible_next_states(state, self.policy[state]):  
+                        # If agent wins or game is draw                       
+                        if s_prime == 0: self.values[state] = 0
+                        elif s_prime == 1: self.values[state] = 1
+                        
+                        else:
+                            self.values[state] += super().transition_function(state, all_s_primes)* (super().reward_function(state) + self.gamma * self.values[s_prime])  
 
 
 
             delta = max(delta, abs(v - self.values[state]))  
             
             if delta < self.epsilon: # until delta < epsilon 
-                print('   Delta < Epsilon!')
                 break
             else: 
                 epoch += 1 
             
 
-    def policy_improvement(self): 
-        for state in self.states:
-            temp = self.policy[state]
+    def policy_improvement(self, resumption): 
+        policy_stable = True # stop condition
+
+        for index_, state in enumerate(self.states):
+            if index_ < resumption:
+                continue
+            
+            if policy_stable == False: 
+                print(f'  State {index_-1} could not improved. Loop has broken!')
+                resumption = index_ - 1 
+                break
+            
+            
+
+            a = self.policy[state] # best actions
 
             if state in self.t_states:
                 continue
 
             best_action = None
-            best_value = float("-inf")
-            policy_stable = True
+            best_value = float("-inf") # initialize value is negative infinite due to handle first comparison 
             
+            
+            for action in self.actions[state]:
+                all_s_primes = []
+                for s_prime in super().possible_next_states(state, action):
+                    if s_prime == () or s_prime == 1: 
+                        continue
+                    else:
+                        all_s_primes.append(s_prime)     
 
             for action in self.actions[state]:
-                expected_value = self.reward_function(state)
-                for s_prime in self.possible_next_states(state, action):
-
-                                    
-                    expected_value += super().transition_function(state) * (super().reward_function(state) + self.gamma * self.values[s_prime])
-
-                if expected_value > best_value:
-                    best_value = expected_value # -inf is utilized in order to take on an unbounded upper value for comparision role
-                    best_action = action
+                action_value = 0
                 
+                for s_prime in self.possible_next_states(state, action):   
+                    if s_prime == 1:
+                        action_value = 1
+                    elif s_prime == ():
+                        action_value = 0
+                    else:
+                        action_value += super().transition_function(state, all_s_primes) * (super().reward_function(state) + self.gamma * self.values[s_prime])
+                
+
+                if action_value > best_value:
+                        best_value = action_value 
+                        best_action = action
+            
             self.policy[state] = best_action
 
-            if temp != self.policy[state]: # Comparision Random Action and Best Action
+            # when the above loop ends, all actions can be taken for a particular state was evaluated and the best action is selected according to action value's which is calculated informations we get in policy evaluation
+            # however, we had considered a random action in policy evaluation and calculated state values according to this. If we could not satisfied the action we select random and the new best action we get now is equal, THEN WE MUST REPEAT POLICY EVALUATION PROCESS WITH THE NEW BEST ACTION WE GOT.
+
+            if a != self.policy[state]: # Comparision Random Action and Best Action
                 policy_stable = False 
         
-        return policy_stable
+        return policy_stable, resumption
             
         
-
-
     def policy_iteration(self):
         start_time = time()
+        resumption = 0
+        print('Total Possible State:',len(self.states))
         for s in self.states:
             # choose a random action for each state
             if s not in self.t_states:
                 # A random action selection for every single policy
                 self.policy[s] = np.random.choice(self.actions[s])
-            
+        
         policy_iter = 1
         while True:
             print("Policy Iteration loop: {}".format(policy_iter))
             self.policy_evaluation()
 
-            if self.policy_improvement(): 
+            policy_stable, resumption = self.policy_improvement(resumption)
+            if policy_stable: 
                 break
 
-            else: policy_iter += 1
+            else: 
+                policy_iter += 1
+
         
         end_time = time()
 
