@@ -9,9 +9,8 @@ def define_an_agent(mark):
         raise Exception("Mark parameter must be 'X' or 'O'.")
     
 
-    the_master = DP(mark_number) # X
 
-    
+    the_master = DP(mark_number) # X    
     the_master.policy_iteration()
     
 
@@ -19,7 +18,8 @@ def define_an_agent(mark):
 
     policy_str_keys = {str(key): value for key, value in the_master.policy.items()}
 
-    with open(f"tic-tac-toe-dp\policies\policy_iteration_{mark}.json", 'w') as json_file:
+    json_file_path = f"tic-tac-toe-dp\policies\policy_iteration_{mark}.json"
+    with open(json_file_path, 'w') as json_file:
         json.dump(policy_str_keys, json_file)
     
 
