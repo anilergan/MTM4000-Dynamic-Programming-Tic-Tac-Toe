@@ -104,12 +104,12 @@ class MDP(play_tic_tac_toe):
         """
         The probability of each action that can be taken for a given state
         """
-        ultimate_action = False
+        rival_ultimate_action = False
         for s_prime in all_s_primes:
-            if self.reward_function(s_prime): ultimate_action = True
+            if self.reward_function(s_prime): rival_ultimate_action = True
         
         # If rival has a action which wins the game, rival make that action, indeed!
-        if ultimate_action:
+        if rival_ultimate_action:
             for s_prime in all_s_primes:
                 if self.reward_function(s_prime):
                     return 1
@@ -143,7 +143,8 @@ class MDP(play_tic_tac_toe):
         # s_a = [0,2,1,1,2,2,0,0,1]
 
         if super().win(s_a): return [1]
-        elif s_a.count(0) == 0: return [] # If I win the game after my action or the game ends draw, there is no possible s_a_a for rival.
+        elif s_a.count(0) == 0: return [0] 
+        # If I win the game after my action or the game ends draw, there is no possible s_a_a for rival.
         
         all_possible_s_a_a = [] # State + My Action + Rival Action -> Possible States (s_a_a)
         for indx, cell in enumerate(s_a):

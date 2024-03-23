@@ -84,6 +84,8 @@ class the_master(computer):
 
 
 
+    def check_values_of_a_status(status):
+        
 
 
         

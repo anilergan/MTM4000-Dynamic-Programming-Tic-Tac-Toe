@@ -20,9 +20,18 @@ class DP(MDP):
         self.policy = {}
         self.initialize_P()
 
-        self.resumption = 0
+        self.action_values = {}
+        for state in self.states:
+            action_values_list = []
+            for _ in self.actions:
+                action_values_list.append(0)
+            self.action_values[state] = action_values_list
 
+        
 
+    def get_action_values(self, status):
+        return self.action_values[status]
+        
 
     def initialize_V(self):
         for state in self.states:
@@ -39,6 +48,7 @@ class DP(MDP):
         """
         epoch = 1
         while True:
+            print(f"   Policy Evaluation ecoch: {epoch}")
              # That will be representation of value's variation
             delta = 0
             # Terminal State Exception
@@ -51,25 +61,34 @@ class DP(MDP):
                     
                 # First let's evaluate the transitions well. First make s_primes as a list and push it into transition function. Remember to adjust transition function appropriate for that.
 
-                
+
+                # Check every single s_prime and list them. So in possible next state function we'll be able to observe if rival has a winning action according to our move. If there is, so that's possibility is absolute. 
                 for action in self.actions[state]:
                     all_s_primes = []
                     for s_prime in super().possible_next_states(state, action):
-                        if s_prime == () or s_prime == 1: 
+                        if s_prime == 0 or s_prime == 1: 
                             continue
                         else:
                             all_s_primes.append(s_prime)
-
+                
+                action_value_list = []
                 for action in self.actions[state]:
-                    for s_prime in super().possible_next_states(state, self.policy[state]):  
-                        # If agent wins or game is draw                       
-                        if s_prime == 0: self.values[state] = 0
-                        elif s_prime == 1: self.values[state] = 1
+                    for s_prime in super().possible_next_states(state, action):  
+                        if s_prime == 1:
+                            action_value = 1
+                        
+                        elif s_prime == 0:
+                            action_value = 0
                         
                         else:
-                            self.values[state] += super().transition_function(state, all_s_primes)* (super().reward_function(state) + self.gamma * self.values[s_prime])  
+                            action_value = super().transition_function(state, all_s_primes)* (super().reward_function(state) + self.gamma * self.values[s_prime])
+                        
 
-
+                        self.values[state] += action_value
+                
+                    action_value_list.append(action_value)
+                    
+                self.action_values[state] = action_value_list
 
             delta = max(delta, abs(v - self.values[state]))  
             
@@ -79,20 +98,11 @@ class DP(MDP):
                 epoch += 1 
             
 
-    def policy_improvement(self, resumption): 
+    def policy_improvement(self): 
         policy_stable = True # stop condition
 
-        for index_, state in enumerate(self.states):
-            if index_ < resumption:
-                continue
-            
-            if policy_stable == False: 
-                print(f'  State {index_-1} could not improved. Loop has broken!')
-                resumption = index_ - 1 
-                break
-            
-            
-
+        for state in self.states:
+ 
             a = self.policy[state] # best actions
 
             if state in self.t_states:
@@ -105,7 +115,7 @@ class DP(MDP):
             for action in self.actions[state]:
                 all_s_primes = []
                 for s_prime in super().possible_next_states(state, action):
-                    if s_prime == () or s_prime == 1: 
+                    if s_prime == 0 or s_prime == 1: 
                         continue
                     else:
                         all_s_primes.append(s_prime)     
@@ -116,7 +126,7 @@ class DP(MDP):
                 for s_prime in self.possible_next_states(state, action):   
                     if s_prime == 1:
                         action_value = 1
-                    elif s_prime == ():
+                    elif s_prime == 0:
                         action_value = 0
                     else:
                         action_value += super().transition_function(state, all_s_primes) * (super().reward_function(state) + self.gamma * self.values[s_prime])
@@ -134,12 +144,12 @@ class DP(MDP):
             if a != self.policy[state]: # Comparision Random Action and Best Action
                 policy_stable = False 
         
-        return policy_stable, resumption
+        return policy_stable, 
             
         
     def policy_iteration(self):
         start_time = time()
-        resumption = 0
+    
         print('Total Possible State:',len(self.states))
         for s in self.states:
             # choose a random action for each state
@@ -152,7 +162,7 @@ class DP(MDP):
             print("Policy Iteration loop: {}".format(policy_iter))
             self.policy_evaluation()
 
-            policy_stable, resumption = self.policy_improvement(resumption)
+            policy_stable = self.policy_improvement()
             if policy_stable: 
                 break
 
@@ -164,9 +174,9 @@ class DP(MDP):
 
         print(f"Policy Iteration process has taken {end_time - start_time} sec.")
 
-        return self.policy
+        return self.policy, self.action_values
         
-            
+          
 
     def value_iteration(self):
         """
@@ -186,7 +196,31 @@ class DP(MDP):
             π(s) 0 argmax[a](∑[s',r] p(s', r|s, a)[r + γ V(s')])
         """
 
+        while True:
+            delta = 0
+            for state in self.states:
+                
+                for action in self.actions[state]:
+                    all_s_primes = []
+                    for s_prime in super().possible_next_states(state, action):
+                        if s_prime == 0 or s_prime == 1: 
+                            continue
+                        else:
+                            all_s_primes.append(s_prime)    
 
+                v = self.values[state]
+                max_a = float("-inf")
+                for action in self.actions:
+                    for s_prime in super().possible_next_states(state, action):
+                        a = super().transition_function(s_prime, all_s_primes) * (super().reward_function(state) + self.gamma * self.values[s_prime])
+                        if a > max_a: max_a = a
+
+                self.values[state] = max_a
+                if delta < abs(v-self.values[state]): delta = abs(v-self.values[state])
+                if delta < self.epsilon: break
+
+
+            # for state in self.states:
         # Gamma: Discount factor which represents coefficient determines the importance of subsequent states in determinining policy for current state
         # Epsilon: That represents the number (which is proposed to be a very small) of condition to break infinitive loop 
         # Delta: Value variation
@@ -202,6 +236,7 @@ class DP(MDP):
 
          # possible states only due to agent's mark
          
+
 
 
 
