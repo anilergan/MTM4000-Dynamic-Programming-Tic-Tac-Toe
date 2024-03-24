@@ -1,0 +1,1444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>800</width>
+     <height>800</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>800</width>
+     <height>800</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#frame_game {
+background-color: rgb(239, 239, 239);
+border-radius: 20px
+}
+
+QLabel {
+color: rgb(12,16,25);
+font: 16pt &quot;Arial&quot;;
+text-align: left;
+
+}
+
+
+#frame_nam, #frame_spm, #frame_tmm {
+background-color:rgb(0,0,0,8);
+border-radius: 25px;
+border: 2px solid rgb(0,0,0,24)
+
+}</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QStackedWidget" name="stackedwidget_content">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>800</width>
+        <height>800</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>800</width>
+        <height>800</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#page_1_menu  {
+	background-color: rgb(250,251,255);
+}
+
+#page_2_game {
+background-color: rgb(250,251,255);
+}
+
+</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="page_1_menu">
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#button_spm {
+background-color: rgba(12,16,25,5)
+}
+
+#button_spm::hover {
+border: 2px solid rgba(20,124,236, 60);
+background-color: rgba(20,124,236, 20);
+}
+
+QPushButton::hover {
+border: 2px solid rgba(20,124,236, 60);
+background-color: rgba(20,124,236, 20);
+}
+
+QPushButton{
+font: 16pt &quot;Arial&quot;;
+color: rgb(12,16,25);
+border: 2px solid  rgba(12,16,25,25);
+border-radius: 25px;
+}
+
+QGroupBox {
+color: rgb(12,16,25);
+background-color: rgba(12,16,25, 5);
+font: 16pt &quot;Segoe UI Variable Display&quot;;
+border:  2px solid  rgba(12,16,25,25);
+border-radius: 25px;
+margin: 10px 0 0 0;
+}
+
+QGroupBox::title {
+    subcontrol-position: top center; /* Başlığı ortalamak için */
+}</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>5</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMinimumSize</enum>
+        </property>
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <property name="topMargin">
+         <number>20</number>
+        </property>
+        <property name="rightMargin">
+         <number>10</number>
+        </property>
+        <property name="bottomMargin">
+         <number>10</number>
+        </property>
+        <item alignment="Qt::AlignTop">
+         <widget class="QLabel" name="game_header">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>80</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>80</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Forte</family>
+            <pointsize>36</pointsize>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(12,16,25);
+font: 36pt &quot;Forte&quot;;
+
+
+</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Tic-Tac-Toe&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="game_image">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>16</pointsize>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="qrc6.qrc">:/icons/tic-tac-toe.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QPushButton" name="button_spm">
+          <property name="minimumSize">
+           <size>
+            <width>275</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>275</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(20,124,236);</string>
+          </property>
+          <property name="text">
+           <string>Single Player Mode</string>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="minimumSize">
+           <size>
+            <width>350</width>
+            <height>275</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>350</width>
+            <height>275</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="title">
+           <string>Play Against Computer</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <property name="spacing">
+            <number>5</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>40</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>20</number>
+           </property>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QFrame" name="frame_mark_selection">
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>75</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>300</width>
+               <height>75</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
+#frame_mark_selection{
+font: 12pt &quot;Segoe UI Variable Display&quot;;
+color: rgba(12,16,25);
+border: 2px solid rgba(12,16,25, 12);
+border-radius: 25px; 
+}
+
+QRadioButton {
+width: 48px;
+height: 48px;
+border-radius: 25px;
+border: 1px solid rgba(12,16,25, 25);
+}
+
+
+
+
+
+
+
+QRadioButton::hover {
+border: 1px solid rgba(20,124,236, 50);
+background-color: rgba(20,124,236, 25)
+}
+
+QRadioButton::indicator {
+width: 48px; /* İşaret kutusunun genişliği */
+height: 48px; /* İşaret kutusunun yüksekliği */
+border: None;
+}
+</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QLabel" name="text_mark_selection">
+                <property name="styleSheet">
+                 <string notr="true">font: 12pt &quot;Segoe UI Variable Display&quot;;
+</string>
+                </property>
+                <property name="text">
+                 <string>Mark Selection</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radio_button_x">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+QRadioButton::indicator {
+image: url(&quot;:/icons/x.png&quot;);
+}
+
+QRadioButton::indicator:checked {
+width: 43px;
+height: 43px;
+border: 3px solid rgb(255, 183, 67);
+border-radius: 25px;
+background-color: rgba(255, 183, 67, 50);
+border-radius: 24px;
+image: url(&quot;:/icons/x_crown.png&quot;);
+}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>10</width>
+                  <height>10</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radio_button_o">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QRadioButton::indicator {
+
+image: url(&quot;:/icons/o.png&quot;);
+}
+
+QRadioButton::indicator:checked {
+width: 43px;
+height: 43px;
+border: 3px solid rgb(255, 183, 67);
+border-radius: 25px;
+background-color: rgba(255, 183, 67, 50);
+border-radius: 24px;
+image: url(&quot;:/icons/o_crown.png&quot;);
+}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QPushButton" name="button_easy_mode">
+             <property name="minimumSize">
+              <size>
+               <width>180</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>180</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(20,124,236);</string>
+             </property>
+             <property name="text">
+              <string>Easy Mode</string>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QPushButton" name="button_hard_mode">
+             <property name="minimumSize">
+              <size>
+               <width>180</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>180</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(20,124,236);</string>
+             </property>
+             <property name="text">
+              <string>Hard Mode</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QPushButton" name="button_exit">
+          <property name="minimumSize">
+           <size>
+            <width>90</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>90</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#button_exit {
+background-color: rgba(233,20,76,5);
+border: 2px solid  rgba(233,20,76,25);
+color: rgb(233,20,76)
+}
+
+#button_exit::hover {
+border: 2px solid rgba(233,20,76, 60);
+background-color: rgba(233,20,76, 20);
+}</string>
+          </property>
+          <property name="text">
+           <string>Exit</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="by_anil_ergan">
+          <property name="styleSheet">
+           <string notr="true">font: 25 8pt &quot;Segoe UI Variable Display&quot;;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;by Anıl ERGAN&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_2_game">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="spacing">
+         <number>20</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>50</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QFrame" name="frame_game">
+          <property name="minimumSize">
+           <size>
+            <width>600</width>
+            <height>600</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>600</width>
+            <height>600</height>
+           </size>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#frame_game * {
+font: italic 24pt &quot;Arial&quot;;
+color:  rgba(12,16,25, 50)
+}
+
+#frame_game {
+background-color: rgb(12,16,25)
+
+}
+QFrame {
+background-color: rgba(250,251,255, 255);
+}
+
+#frame_cell_11 {border-top-left-radius: 10px;}
+#frame_cell_13 {border-top-right-radius: 10px;}
+#frame_cell_31 {border-bottom-left-radius: 10px;}
+#frame_cell_33 {border-bottom-right-radius: 10px;}
+
+QRadioButton {
+width: 100px;
+height: 100px;
+
+}
+QRadioButton::indicator {
+width: 160px; /* İşaret kutusunun genişliği */
+height: 160px; /* İşaret kutusunun yüksekliği */
+border: None;
+}
+
+
+QRadioButton::indicator:checked {
+  image: url(&quot;:/icons/o.png&quot;);
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0" columnstretch="0,0,0,0,0">
+           <property name="leftMargin">
+            <number>8</number>
+           </property>
+           <property name="topMargin">
+            <number>8</number>
+           </property>
+           <property name="rightMargin">
+            <number>8</number>
+           </property>
+           <property name="bottomMargin">
+            <number>8</number>
+           </property>
+           <property name="spacing">
+            <number>7</number>
+           </property>
+           <item row="0" column="4">
+            <widget class="QFrame" name="frame_cell_13">
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QRadioButton" name="mark_13">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>190</width>
+                <height>190</height>
+               </rect>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>190</width>
+                <height>190</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>190</width>
+                <height>190</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QLabel" name="value_cell_13">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>150</width>
+                <height>150</height>
+               </rect>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="2" column="3">
+            <widget class="QFrame" name="frame_cell_32">
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QRadioButton" name="mark_32">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>12</y>
+                <width>156</width>
+                <height>156</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>RadioButton</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="value_cell_32">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>150</width>
+                <height>150</height>
+               </rect>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QFrame" name="frame_cell_31">
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QRadioButton" name="mark_31">
+              <property name="geometry">
+               <rect>
+                <x>11</x>
+                <y>11</y>
+                <width>158</width>
+                <height>158</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>RadioButton</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="value_cell_31">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>150</width>
+                <height>150</height>
+               </rect>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QFrame" name="frame_cell_11">
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QRadioButton" name="mark_11">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>190</width>
+                <height>190</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">marrgin-right:10px;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QLabel" name="value_cell_11">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>150</width>
+                <height>150</height>
+               </rect>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QFrame" name="frame_cell_21">
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QRadioButton" name="mark_21">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>12</y>
+                <width>156</width>
+                <height>156</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>RadioButton</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="value_cell_21">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>150</width>
+                <height>150</height>
+               </rect>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QFrame" name="frame_cell_12">
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QRadioButton" name="mark_12">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>12</y>
+                <width>156</width>
+                <height>156</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>RadioButton</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="value_cell_12">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>150</width>
+                <height>150</height>
+               </rect>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="2" column="4">
+            <widget class="QFrame" name="frame_cell_33">
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QRadioButton" name="mark_33">
+              <property name="geometry">
+               <rect>
+                <x>11</x>
+                <y>11</y>
+                <width>158</width>
+                <height>158</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>RadioButton</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="value_cell_33">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>150</width>
+                <height>150</height>
+               </rect>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="1" column="4">
+            <widget class="QFrame" name="frame_cell_23">
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QRadioButton" name="mark_23">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>12</y>
+                <width>156</width>
+                <height>156</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>RadioButton</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="value_cell_23">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>150</width>
+                <height>150</height>
+               </rect>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="1" column="3">
+            <widget class="QFrame" name="frame_cell_22">
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QRadioButton" name="mark_22">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>12</y>
+                <width>156</width>
+                <height>156</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>RadioButton</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="value_cell_22">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>150</width>
+                <height>150</height>
+               </rect>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QFrame" name="frame_menu">
+          <property name="minimumSize">
+           <size>
+            <width>600</width>
+            <height>120</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>600</width>
+            <height>120</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#frame_menu {
+background-color: rgba(12,16,25, 5);
+border:  2px solid rgba(12,16,25,25);
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+}
+
+QPushButton::hover {
+border: 2px solid rgba(20,124,236, 60);
+background-color: rgba(20,124,236, 20);
+}
+
+QPushButton{
+font: 16pt &quot;Arial&quot;;
+border: 2px solid  rgba(12,16,25,25);
+border-radius: 25px;
+color: rgb(20,124,236);
+}
+
+QLabel {
+font: 24pt &quot;Arial&quot;;
+font: 87 32pt &quot;Arial Black&quot;;
+color: rgb(250,251,255);
+border-radius: 40px;
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>30</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>30</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="button_reset">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>Reset</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="spacerH_1">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="winner_mark">
+             <property name="minimumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="crown">
+             <property name="minimumSize">
+              <size>
+               <width>42</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>42</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="spacerH_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="button_menu">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>Menu</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="qrc6.qrc"/>
+ </resources>
+ <connections/>
+</ui>

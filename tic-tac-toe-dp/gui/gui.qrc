@@ -1,7 +1,0 @@
-<RCC>
-  <qresource prefix="icons">
-    <file>tic-tac-toe.png</file>
-    <file>o.png</file>
-    <file>x.png</file>
-  </qresource>
-</RCC>
