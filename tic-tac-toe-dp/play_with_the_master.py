@@ -6,7 +6,6 @@ import json, ast
 class the_master(computer):
     def __init__(self): # random mark is selected for now
         super().__init__() 
-        self.play()
 
     def play(self):
         player_mark = super().inception_mark_selection()
@@ -37,7 +36,7 @@ class the_master(computer):
         
         policy_dic = {self.str_to_tuple(key): value for key, value in policy_dic.items()}
 
-        game_matrix = super().get_game_matrix()
+        game_matrix = self.game_matrix()
 
         best_action = policy_dic[tuple(game_matrix.flatten())]
 

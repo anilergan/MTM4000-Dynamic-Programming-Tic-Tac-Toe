@@ -9,6 +9,7 @@ class computer(play_tic_tac_toe):
             
     def play_game_as_x(self, agent_move_function):
 
+        self.agent_move_function = agent_move_function
         while super().get_game_on() == True: 
             
             turn = super().which_player(self.move_turn) #if 0 it's first player if 1 it's second player
@@ -16,21 +17,22 @@ class computer(play_tic_tac_toe):
             if turn == 0:
                 self.user_move('X', turn)
             elif turn == 1: 
-                agent_move_function(turn)
+                self.agent_move_function(turn)
             
             self.move_turn = super().is_game_going_on(self.move_turn)
             if not self.move_turn: break
             
 
     def play_game_as_o(self, agent_move_function):
-
+        
+        self.agent_move_function = agent_move_function
         while super().get_game_on() == True:
             
 
             turn = super().which_player(self.move_turn) #if 0 it's first player if 1 it's second player 
 
             if turn == 0:
-                agent_move_function(turn)
+                self.agent_move_function(turn)
             elif turn == 1: 
                 self.user_move('O', turn)
             
@@ -50,12 +52,12 @@ class computer(play_tic_tac_toe):
         move_row = int(str(move_coordinate)[0]) - 1
         move_col = int(str(move_coordinate)[1]) - 1
 
-        if (super().get_game_matrix()[move_row, move_col] != 0):
+        if (self.game_matrix[move_row, move_col] != 0):
             print('Please leave a mark in an empty cell')
             self.user_move(mark, turn)
             return
         
-        super().get_game_matrix()[move_row, move_col] = turn + 1 
+        self.game_matrix[move_row, move_col] = turn + 1 
 
 
 
@@ -63,7 +65,7 @@ class computer(play_tic_tac_toe):
         empty_cells_list = []
         for row in range(3):
             for col in range(3):
-                mark_value = super().get_game_matrix()[row,col] 
+                mark_value = self.game_matrix[row,col] 
                 if mark_value == 0: empty_cells_list.append([row,col])
         return empty_cells_list
 

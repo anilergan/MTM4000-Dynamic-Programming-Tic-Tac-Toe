@@ -5,7 +5,6 @@ class naive_agent(computer):
 
     def __init__(self):
         super().__init__()
-        self.play()
 
 
     def play(self):
@@ -21,9 +20,9 @@ class naive_agent(computer):
     def agent_plays_random(self, ep_cell_co_list, mark):
         random_index = np.random.randint(len(ep_cell_co_list))
         random_coordination = ep_cell_co_list[random_index]
-        super().get_game_matrix()[random_coordination[0], random_coordination[1]] = mark
+        self.game_matrix[random_coordination[0], random_coordination[1]] = mark
 
-
+    
     def agent_move(self, turn):
         # turn returns 0 for mark X and 1 for mark O
         mark_num = turn + 1

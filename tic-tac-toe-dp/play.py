@@ -18,13 +18,18 @@ class play_tic_tac_toe(tic_tac_toe):
     
         if mode == '1': 
             from play_one_player import self_play
-            self_play_obj = self_play()
+            self.agent = self_play()
+            self.agent.play()
+
         elif mode == '2': 
             from play_with_naive_agent import naive_agent
-            naive_agent_obj = naive_agent()
+            self.agent = naive_agent()
+            self.agent.play()
+
         elif mode == '3': 
             from play_with_the_master import the_master
-            the_master_obj = the_master()
+            self.agent = the_master()
+            self.agent.play()
 
         while True:
             choosen = input('\n1-) Main Menu\nq-) Quit\n')
@@ -61,10 +66,11 @@ class play_tic_tac_toe(tic_tac_toe):
         else: return True
 
 
-
     def win(self, board = None, check_two_win = False):
         # Self play
-        if board == None: board = super().get_game_matrix()
+
+        if np.any(board is None):
+            board = self.game_matrix
 
         else: 
             try: board = np.array(board).reshape(3,3)
@@ -113,21 +119,21 @@ class play_tic_tac_toe(tic_tac_toe):
                 # IS GAME GOING ON?
         if self.win():  # Game Over!
             if isinstance(move_turn, int):
-                super().edit_game_board()
-                super().display_board()
+                self.edit_game_board()
+                self.display_board()
                 self.game_over(self.win()) 
                 return 
             else: return 'Win State Satisfied'
         
         elif isinstance(move_turn, int):
-            super().edit_game_board()
-            super().display_board()
+            self.edit_game_board()
+            self.display_board()
             move_turn += 1
             if move_turn == 9: self.game_over(0)
             return move_turn
         
         else:
-            if np.all(super().get_game_matrix() != 0):
+            if np.all(self.game_matrix != 0):
                 self.game_over(0)
 
 

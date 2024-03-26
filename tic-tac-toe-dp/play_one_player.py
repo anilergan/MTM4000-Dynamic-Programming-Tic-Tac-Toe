@@ -4,10 +4,9 @@ class self_play(play_tic_tac_toe):
 
     def __init__(self):
         super().__init__()
-        self.self_play()
 
 
-    def self_play(self):
+    def play(self):
         super().board_move_tutor()
         move_turn = 0 
 
@@ -27,16 +26,16 @@ class self_play(play_tic_tac_toe):
         if not move_coordinate: 
             self.move(turn)
             return
-
+        
         move_row = int(str(move_coordinate)[0]) - 1
         move_col = int(str(move_coordinate)[1]) - 1
 
-        if (super().get_game_matrix()[move_row, move_col] != 0):
+        if (self.game_matrix[move_row, move_col] != 0):
             print('Please leave a mark in an empty cell')
             self.move(turn)
             return
 
-        super().get_game_matrix()[move_row, move_col] = turn + 1      
+        self.game_matrix[move_row, move_col] = turn + 1      
 
 
     def check_input(self, inp):

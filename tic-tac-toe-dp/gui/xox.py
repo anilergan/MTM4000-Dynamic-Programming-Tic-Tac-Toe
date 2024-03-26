@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'tic-tac-toe-dp/gui/xox.ui'
+# Form implementation generated from reading ui file 'tic-tac-toe-dp\gui\xox.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -51,11 +51,11 @@ class Ui_MainWindow(object):
         self.stackedwidget_content.setMinimumSize(QtCore.QSize(800, 800))
         self.stackedwidget_content.setMaximumSize(QtCore.QSize(800, 800))
         self.stackedwidget_content.setStyleSheet("#page_1_menu  {\n"
-"    background-color: rgb(250,251,255);\n"
+"    background-color: rgb(248, 249, 249);\n"
 "}\n"
 "\n"
 "#page_2_game {\n"
-"background-color: rgb(250,251,255);\n"
+"background-color: rgb(248, 249, 249);\n"
 "}\n"
 "\n"
 "")
@@ -65,43 +65,45 @@ class Ui_MainWindow(object):
         self.page_1_menu = QtWidgets.QWidget()
         self.page_1_menu.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
         self.page_1_menu.setStyleSheet("#button_spm {\n"
-"background-color: rgba(12,16,25,5)\n"
+"background-color: rgb(229, 231, 233)\n"
 "}\n"
 "\n"
 "#button_spm::hover {\n"
-"border: 2px solid rgba(20,124,236, 60);\n"
+"border: 2px solid rgb(20,124,236);\n"
 "background-color: rgba(20,124,236, 20);\n"
 "}\n"
 "\n"
 "QPushButton::hover {\n"
-"border: 2px solid rgba(20,124,236, 60);\n"
+"border: 2px solid rgb(20,124,236);\n"
 "background-color: rgba(20,124,236, 20);\n"
 "}\n"
 "\n"
 "QPushButton{\n"
 "font: 16pt \"Arial\";\n"
 "color: rgb(12,16,25);\n"
-"border: 2px solid  rgba(12,16,25,25);\n"
+"border: 2px solid  rgb(202, 207, 210);\n"
 "border-radius: 25px;\n"
 "}\n"
 "\n"
 "QGroupBox {\n"
 "color: rgb(12,16,25);\n"
-"background-color: rgba(12,16,25, 5);\n"
-"font: 16pt \"Segoe UI Variable Display\";\n"
-"border:  2px solid  rgba(12,16,25,25);\n"
+"background-color: rgb(229, 231, 233);\n"
+"    font: 700 16pt \"Arial\";\n"
+"border:  2px solid rgb(12,16,25);\n"
 "border-radius: 25px;\n"
 "margin: 10px 0 0 0;\n"
 "}\n"
 "\n"
 "QGroupBox::title {\n"
 "    subcontrol-position: top center; /* Başlığı ortalamak için */\n"
+"    subcontrol-origin: margin;\n"
+"    \n"
 "}")
         self.page_1_menu.setObjectName("page_1_menu")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.page_1_menu)
         self.verticalLayout_2.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetMinimumSize)
         self.verticalLayout_2.setContentsMargins(10, 20, 10, 10)
-        self.verticalLayout_2.setSpacing(5)
+        self.verticalLayout_2.setSpacing(10)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.game_header = QtWidgets.QLabel(parent=self.page_1_menu)
         self.game_header.setMinimumSize(QtCore.QSize(0, 80))
@@ -161,23 +163,24 @@ class Ui_MainWindow(object):
         self.frame_mark_selection.setMaximumSize(QtCore.QSize(300, 75))
         self.frame_mark_selection.setStyleSheet("\n"
 "#frame_mark_selection{\n"
-"font: 12pt \"Segoe UI Variable Display\";\n"
-"color: rgba(12,16,25);\n"
-"border: 2px solid rgba(12,16,25, 12);\n"
+"border: 2px solid rgb(215, 219, 221);\n"
+"background-color: rgb(215, 219, 221);\n"
 "border-radius: 25px; \n"
+"}\n"
+"\n"
+"QLabel{\n"
+"font: 14pt \"Arial\";\n"
+"color: rgba(12,16,25);\n"
+"padding: 0 0 0 5;\n"
+"\n"
 "}\n"
 "\n"
 "QRadioButton {\n"
 "width: 48px;\n"
 "height: 48px;\n"
 "border-radius: 25px;\n"
-"border: 1px solid rgba(12,16,25, 25);\n"
+"border: 1px solid rgb(202, 207, 210);\n"
 "}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
 "\n"
 "\n"
 "QRadioButton::hover {\n"
@@ -197,7 +200,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.frame_mark_selection)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.text_mark_selection = QtWidgets.QLabel(parent=self.frame_mark_selection)
-        self.text_mark_selection.setStyleSheet("font: 12pt \"Segoe UI Variable Display\";\n"
+        self.text_mark_selection.setStyleSheet("\n"
 "")
         self.text_mark_selection.setObjectName("text_mark_selection")
         self.horizontalLayout_5.addWidget(self.text_mark_selection)
@@ -273,21 +276,21 @@ class Ui_MainWindow(object):
         self.button_exit.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.button_exit.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
         self.button_exit.setStyleSheet("#button_exit {\n"
-"background-color: rgba(233,20,76,5);\n"
-"border: 2px solid  rgba(233,20,76,25);\n"
+"background-color: rgb(229, 231, 233);\n"
+"border: 2px solid rgb(202, 207, 210);\n"
 "color: rgb(233,20,76)\n"
 "}\n"
 "\n"
 "#button_exit::hover {\n"
-"border: 2px solid rgba(233,20,76, 60);\n"
 "background-color: rgba(233,20,76, 20);\n"
+"border: 2px solid rgb(233,20,76)\n"
 "}")
         self.button_exit.setObjectName("button_exit")
         self.verticalLayout_2.addWidget(self.button_exit, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout_2.addItem(spacerItem2)
         self.by_anil_ergan = QtWidgets.QLabel(parent=self.page_1_menu)
-        self.by_anil_ergan.setStyleSheet("font: 25 8pt \"Segoe UI Variable Display\";")
+        self.by_anil_ergan.setStyleSheet("font: italic 8pt \"Arial\";")
         self.by_anil_ergan.setObjectName("by_anil_ergan")
         self.verticalLayout_2.addWidget(self.by_anil_ergan)
         self.stackedwidget_content.addWidget(self.page_1_menu)
@@ -312,29 +315,30 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QFrame {\n"
-"background-color: rgba(250,251,255, 255);\n"
+"background-color: rgb(248, 249, 249);\n"
 "}\n"
 "\n"
-"#frame_cell_11 {border-top-left-radius: 10px;}\n"
-"#frame_cell_13 {border-top-right-radius: 10px;}\n"
-"#frame_cell_31 {border-bottom-left-radius: 10px;}\n"
-"#frame_cell_33 {border-bottom-right-radius: 10px;}\n"
+"QPushButton {\n"
+"background-color: transparent;\n"
+"}\n"
 "\n"
-"QRadioButton {\n"
+"#frame_cell_11, #mark_11  {border-top-left-radius: 20px;}\n"
+"#frame_cell_13, #mark_13 {border-top-right-radius: 20px;}\n"
+"#frame_cell_31, #mark_31  {border-bottom-left-radius: 20px;}\n"
+"#frame_cell_33, #mark_33  {border-bottom-right-radius: 20px;}\n"
+"\n"
+"QPushButton::hover {\n"
+"background-color: rgba(20,124,236, 20)\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton {\n"
 "width: 100px;\n"
 "height: 100px;\n"
 "\n"
 "}\n"
-"QRadioButton::indicator {\n"
-"width: 160px; /* İşaret kutusunun genişliği */\n"
-"height: 160px; /* İşaret kutusunun yüksekliği */\n"
-"border: None;\n"
-"}\n"
 "\n"
-"\n"
-"QRadioButton::indicator:checked {\n"
-"  image: url(\":/icons/o.png\");\n"
-"}")
+"QLabel {background-color: transparent;}")
         self.frame_game.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_game.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_game.setObjectName("frame_game")
@@ -348,11 +352,12 @@ class Ui_MainWindow(object):
         self.frame_cell_13.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_cell_13.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_cell_13.setObjectName("frame_cell_13")
-        self.mark_13 = QtWidgets.QRadioButton(parent=self.frame_cell_13)
+        self.mark_13 = QtWidgets.QPushButton(parent=self.frame_cell_13)
         self.mark_13.setGeometry(QtCore.QRect(0, 0, 190, 190))
         self.mark_13.setMinimumSize(QtCore.QSize(190, 190))
         self.mark_13.setMaximumSize(QtCore.QSize(190, 190))
         self.mark_13.setText("")
+        self.mark_13.setIconSize(QtCore.QSize(200, 200))
         self.mark_13.setObjectName("mark_13")
         self.value_cell_13 = QtWidgets.QLabel(parent=self.frame_cell_13)
         self.value_cell_13.setGeometry(QtCore.QRect(20, 20, 150, 150))
@@ -360,6 +365,8 @@ class Ui_MainWindow(object):
         self.value_cell_13.setText("")
         self.value_cell_13.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.value_cell_13.setObjectName("value_cell_13")
+        self.value_cell_13.raise_()
+        self.mark_13.raise_()
         self.gridLayout.addWidget(self.frame_cell_13, 0, 4, 1, 1)
         self.frame_cell_32 = QtWidgets.QFrame(parent=self.frame_game)
         self.frame_cell_32.setMinimumSize(QtCore.QSize(190, 190))
@@ -367,8 +374,10 @@ class Ui_MainWindow(object):
         self.frame_cell_32.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_cell_32.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_cell_32.setObjectName("frame_cell_32")
-        self.mark_32 = QtWidgets.QRadioButton(parent=self.frame_cell_32)
-        self.mark_32.setGeometry(QtCore.QRect(12, 12, 156, 156))
+        self.mark_32 = QtWidgets.QPushButton(parent=self.frame_cell_32)
+        self.mark_32.setGeometry(QtCore.QRect(0, 0, 190, 190))
+        self.mark_32.setText("")
+        self.mark_32.setIconSize(QtCore.QSize(200, 200))
         self.mark_32.setObjectName("mark_32")
         self.value_cell_32 = QtWidgets.QLabel(parent=self.frame_cell_32)
         self.value_cell_32.setGeometry(QtCore.QRect(20, 20, 150, 150))
@@ -376,6 +385,8 @@ class Ui_MainWindow(object):
         self.value_cell_32.setText("")
         self.value_cell_32.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.value_cell_32.setObjectName("value_cell_32")
+        self.value_cell_32.raise_()
+        self.mark_32.raise_()
         self.gridLayout.addWidget(self.frame_cell_32, 2, 3, 1, 1)
         self.frame_cell_31 = QtWidgets.QFrame(parent=self.frame_game)
         self.frame_cell_31.setMinimumSize(QtCore.QSize(190, 190))
@@ -383,8 +394,10 @@ class Ui_MainWindow(object):
         self.frame_cell_31.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_cell_31.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_cell_31.setObjectName("frame_cell_31")
-        self.mark_31 = QtWidgets.QRadioButton(parent=self.frame_cell_31)
-        self.mark_31.setGeometry(QtCore.QRect(11, 11, 158, 158))
+        self.mark_31 = QtWidgets.QPushButton(parent=self.frame_cell_31)
+        self.mark_31.setGeometry(QtCore.QRect(0, 0, 190, 190))
+        self.mark_31.setText("")
+        self.mark_31.setIconSize(QtCore.QSize(200, 200))
         self.mark_31.setObjectName("mark_31")
         self.value_cell_31 = QtWidgets.QLabel(parent=self.frame_cell_31)
         self.value_cell_31.setGeometry(QtCore.QRect(20, 20, 150, 150))
@@ -392,6 +405,8 @@ class Ui_MainWindow(object):
         self.value_cell_31.setText("")
         self.value_cell_31.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.value_cell_31.setObjectName("value_cell_31")
+        self.value_cell_31.raise_()
+        self.mark_31.raise_()
         self.gridLayout.addWidget(self.frame_cell_31, 2, 2, 1, 1)
         self.frame_cell_11 = QtWidgets.QFrame(parent=self.frame_game)
         self.frame_cell_11.setMinimumSize(QtCore.QSize(190, 190))
@@ -400,10 +415,13 @@ class Ui_MainWindow(object):
         self.frame_cell_11.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_cell_11.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_cell_11.setObjectName("frame_cell_11")
-        self.mark_11 = QtWidgets.QRadioButton(parent=self.frame_cell_11)
+        self.mark_11 = QtWidgets.QPushButton(parent=self.frame_cell_11)
         self.mark_11.setGeometry(QtCore.QRect(0, 0, 190, 190))
-        self.mark_11.setStyleSheet("marrgin-right:10px;")
+        self.mark_11.setStyleSheet("")
         self.mark_11.setText("")
+        self.mark_11.setIconSize(QtCore.QSize(200, 200))
+        self.mark_11.setCheckable(False)
+        self.mark_11.setChecked(False)
         self.mark_11.setObjectName("mark_11")
         self.value_cell_11 = QtWidgets.QLabel(parent=self.frame_cell_11)
         self.value_cell_11.setGeometry(QtCore.QRect(20, 20, 150, 150))
@@ -411,6 +429,8 @@ class Ui_MainWindow(object):
         self.value_cell_11.setText("")
         self.value_cell_11.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.value_cell_11.setObjectName("value_cell_11")
+        self.value_cell_11.raise_()
+        self.mark_11.raise_()
         self.gridLayout.addWidget(self.frame_cell_11, 0, 2, 1, 1)
         self.frame_cell_21 = QtWidgets.QFrame(parent=self.frame_game)
         self.frame_cell_21.setMinimumSize(QtCore.QSize(190, 190))
@@ -418,8 +438,10 @@ class Ui_MainWindow(object):
         self.frame_cell_21.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_cell_21.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_cell_21.setObjectName("frame_cell_21")
-        self.mark_21 = QtWidgets.QRadioButton(parent=self.frame_cell_21)
-        self.mark_21.setGeometry(QtCore.QRect(12, 12, 156, 156))
+        self.mark_21 = QtWidgets.QPushButton(parent=self.frame_cell_21)
+        self.mark_21.setGeometry(QtCore.QRect(0, 0, 190, 190))
+        self.mark_21.setText("")
+        self.mark_21.setIconSize(QtCore.QSize(200, 200))
         self.mark_21.setObjectName("mark_21")
         self.value_cell_21 = QtWidgets.QLabel(parent=self.frame_cell_21)
         self.value_cell_21.setGeometry(QtCore.QRect(20, 20, 150, 150))
@@ -427,6 +449,8 @@ class Ui_MainWindow(object):
         self.value_cell_21.setText("")
         self.value_cell_21.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.value_cell_21.setObjectName("value_cell_21")
+        self.value_cell_21.raise_()
+        self.mark_21.raise_()
         self.gridLayout.addWidget(self.frame_cell_21, 1, 2, 1, 1)
         self.frame_cell_12 = QtWidgets.QFrame(parent=self.frame_game)
         self.frame_cell_12.setMinimumSize(QtCore.QSize(190, 190))
@@ -434,8 +458,12 @@ class Ui_MainWindow(object):
         self.frame_cell_12.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_cell_12.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_cell_12.setObjectName("frame_cell_12")
-        self.mark_12 = QtWidgets.QRadioButton(parent=self.frame_cell_12)
-        self.mark_12.setGeometry(QtCore.QRect(12, 12, 156, 156))
+        self.mark_12 = QtWidgets.QPushButton(parent=self.frame_cell_12)
+        self.mark_12.setGeometry(QtCore.QRect(0, 0, 190, 190))
+        self.mark_12.setText("")
+        self.mark_12.setIconSize(QtCore.QSize(200, 200))
+        self.mark_12.setCheckable(False)
+        self.mark_12.setChecked(False)
         self.mark_12.setObjectName("mark_12")
         self.value_cell_12 = QtWidgets.QLabel(parent=self.frame_cell_12)
         self.value_cell_12.setGeometry(QtCore.QRect(20, 20, 150, 150))
@@ -443,6 +471,8 @@ class Ui_MainWindow(object):
         self.value_cell_12.setText("")
         self.value_cell_12.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.value_cell_12.setObjectName("value_cell_12")
+        self.value_cell_12.raise_()
+        self.mark_12.raise_()
         self.gridLayout.addWidget(self.frame_cell_12, 0, 3, 1, 1)
         self.frame_cell_33 = QtWidgets.QFrame(parent=self.frame_game)
         self.frame_cell_33.setMinimumSize(QtCore.QSize(190, 190))
@@ -450,8 +480,10 @@ class Ui_MainWindow(object):
         self.frame_cell_33.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_cell_33.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_cell_33.setObjectName("frame_cell_33")
-        self.mark_33 = QtWidgets.QRadioButton(parent=self.frame_cell_33)
-        self.mark_33.setGeometry(QtCore.QRect(11, 11, 158, 158))
+        self.mark_33 = QtWidgets.QPushButton(parent=self.frame_cell_33)
+        self.mark_33.setGeometry(QtCore.QRect(0, 0, 190, 190))
+        self.mark_33.setText("")
+        self.mark_33.setIconSize(QtCore.QSize(200, 200))
         self.mark_33.setObjectName("mark_33")
         self.value_cell_33 = QtWidgets.QLabel(parent=self.frame_cell_33)
         self.value_cell_33.setGeometry(QtCore.QRect(20, 20, 150, 150))
@@ -459,6 +491,8 @@ class Ui_MainWindow(object):
         self.value_cell_33.setText("")
         self.value_cell_33.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.value_cell_33.setObjectName("value_cell_33")
+        self.value_cell_33.raise_()
+        self.mark_33.raise_()
         self.gridLayout.addWidget(self.frame_cell_33, 2, 4, 1, 1)
         self.frame_cell_23 = QtWidgets.QFrame(parent=self.frame_game)
         self.frame_cell_23.setMinimumSize(QtCore.QSize(190, 190))
@@ -466,8 +500,10 @@ class Ui_MainWindow(object):
         self.frame_cell_23.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_cell_23.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_cell_23.setObjectName("frame_cell_23")
-        self.mark_23 = QtWidgets.QRadioButton(parent=self.frame_cell_23)
-        self.mark_23.setGeometry(QtCore.QRect(12, 12, 156, 156))
+        self.mark_23 = QtWidgets.QPushButton(parent=self.frame_cell_23)
+        self.mark_23.setGeometry(QtCore.QRect(0, 0, 190, 190))
+        self.mark_23.setText("")
+        self.mark_23.setIconSize(QtCore.QSize(200, 200))
         self.mark_23.setObjectName("mark_23")
         self.value_cell_23 = QtWidgets.QLabel(parent=self.frame_cell_23)
         self.value_cell_23.setGeometry(QtCore.QRect(20, 20, 150, 150))
@@ -475,6 +511,8 @@ class Ui_MainWindow(object):
         self.value_cell_23.setText("")
         self.value_cell_23.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.value_cell_23.setObjectName("value_cell_23")
+        self.value_cell_23.raise_()
+        self.mark_23.raise_()
         self.gridLayout.addWidget(self.frame_cell_23, 1, 4, 1, 1)
         self.frame_cell_22 = QtWidgets.QFrame(parent=self.frame_game)
         self.frame_cell_22.setMinimumSize(QtCore.QSize(190, 190))
@@ -483,8 +521,10 @@ class Ui_MainWindow(object):
         self.frame_cell_22.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_cell_22.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_cell_22.setObjectName("frame_cell_22")
-        self.mark_22 = QtWidgets.QRadioButton(parent=self.frame_cell_22)
-        self.mark_22.setGeometry(QtCore.QRect(12, 12, 156, 156))
+        self.mark_22 = QtWidgets.QPushButton(parent=self.frame_cell_22)
+        self.mark_22.setGeometry(QtCore.QRect(0, 0, 190, 190))
+        self.mark_22.setText("")
+        self.mark_22.setIconSize(QtCore.QSize(200, 200))
         self.mark_22.setObjectName("mark_22")
         self.value_cell_22 = QtWidgets.QLabel(parent=self.frame_cell_22)
         self.value_cell_22.setGeometry(QtCore.QRect(20, 20, 150, 150))
@@ -492,6 +532,8 @@ class Ui_MainWindow(object):
         self.value_cell_22.setText("")
         self.value_cell_22.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.value_cell_22.setObjectName("value_cell_22")
+        self.value_cell_22.raise_()
+        self.mark_22.raise_()
         self.gridLayout.addWidget(self.frame_cell_22, 1, 3, 1, 1)
         self.verticalLayout_4.addWidget(self.frame_game, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
@@ -500,20 +542,20 @@ class Ui_MainWindow(object):
         self.frame_menu.setMinimumSize(QtCore.QSize(600, 120))
         self.frame_menu.setMaximumSize(QtCore.QSize(600, 120))
         self.frame_menu.setStyleSheet("#frame_menu {\n"
-"background-color: rgba(12,16,25, 5);\n"
-"border:  2px solid rgba(12,16,25,25);\n"
+"background-color: rgb(229, 231, 233);\n"
+"border:  none;\n"
 "border-top-left-radius: 20px;\n"
 "border-top-right-radius: 20px;\n"
 "}\n"
 "\n"
 "QPushButton::hover {\n"
-"border: 2px solid rgba(20,124,236, 60);\n"
+"border: 2px solid rgb(20,124,236);\n"
 "background-color: rgba(20,124,236, 20);\n"
 "}\n"
 "\n"
 "QPushButton{\n"
 "font: 16pt \"Arial\";\n"
-"border: 2px solid  rgba(12,16,25,25);\n"
+"border: 2px solid  rgb(202, 207, 210);\n"
 "border-radius: 25px;\n"
 "color: rgb(20,124,236);\n"
 "}\n"
@@ -528,8 +570,8 @@ class Ui_MainWindow(object):
         self.frame_menu.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_menu.setObjectName("frame_menu")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_menu)
-        self.horizontalLayout.setContentsMargins(30, 0, 30, 0)
-        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setContentsMargins(30, 0, 10, 0)
+        self.horizontalLayout.setSpacing(5)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.button_reset = QtWidgets.QPushButton(parent=self.frame_menu)
         self.button_reset.setMinimumSize(QtCore.QSize(100, 50))
@@ -537,34 +579,76 @@ class Ui_MainWindow(object):
         self.button_reset.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.button_reset.setObjectName("button_reset")
         self.horizontalLayout.addWidget(self.button_reset)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout.addItem(spacerItem4)
-        self.winner_mark = QtWidgets.QLabel(parent=self.frame_menu)
-        self.winner_mark.setMinimumSize(QtCore.QSize(64, 64))
-        self.winner_mark.setMaximumSize(QtCore.QSize(64, 64))
-        self.winner_mark.setStyleSheet("")
-        self.winner_mark.setText("")
-        self.winner_mark.setScaledContents(True)
-        self.winner_mark.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.winner_mark.setObjectName("winner_mark")
-        self.horizontalLayout.addWidget(self.winner_mark)
-        self.crown = QtWidgets.QLabel(parent=self.frame_menu)
-        self.crown.setMinimumSize(QtCore.QSize(42, 42))
-        self.crown.setMaximumSize(QtCore.QSize(42, 42))
-        self.crown.setStyleSheet("")
-        self.crown.setText("")
-        self.crown.setScaledContents(True)
-        self.crown.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.crown.setObjectName("crown")
-        self.horizontalLayout.addWidget(self.crown)
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout.addItem(spacerItem5)
         self.button_menu = QtWidgets.QPushButton(parent=self.frame_menu)
         self.button_menu.setMinimumSize(QtCore.QSize(100, 50))
         self.button_menu.setMaximumSize(QtCore.QSize(100, 50))
         self.button_menu.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.button_menu.setObjectName("button_menu")
         self.horizontalLayout.addWidget(self.button_menu)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout.addItem(spacerItem4)
+        self.frame_announce = QtWidgets.QFrame(parent=self.frame_menu)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_announce.sizePolicy().hasHeightForWidth())
+        self.frame_announce.setSizePolicy(sizePolicy)
+        self.frame_announce.setMinimumSize(QtCore.QSize(150, 100))
+        self.frame_announce.setMaximumSize(QtCore.QSize(150, 100))
+        self.frame_announce.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_announce.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_announce.setObjectName("frame_announce")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.frame_announce)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_5.setSpacing(0)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.frame_winner_announce = QtWidgets.QFrame(parent=self.frame_announce)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_winner_announce.sizePolicy().hasHeightForWidth())
+        self.frame_winner_announce.setSizePolicy(sizePolicy)
+        self.frame_winner_announce.setMinimumSize(QtCore.QSize(100, 50))
+        self.frame_winner_announce.setMaximumSize(QtCore.QSize(100, 50))
+        self.frame_winner_announce.setStyleSheet("#frame_winner_announce{\n"
+"border-radius: 15px;\n"
+"}")
+        self.frame_winner_announce.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_winner_announce.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_winner_announce.setObjectName("frame_winner_announce")
+        self.crown = QtWidgets.QLabel(parent=self.frame_winner_announce)
+        self.crown.setGeometry(QtCore.QRect(50, 0, 45, 45))
+        self.crown.setMinimumSize(QtCore.QSize(45, 45))
+        self.crown.setMaximumSize(QtCore.QSize(45, 45))
+        self.crown.setStyleSheet("")
+        self.crown.setText("")
+        self.crown.setScaledContents(True)
+        self.crown.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.crown.setObjectName("crown")
+        self.winner_mark = QtWidgets.QLabel(parent=self.frame_winner_announce)
+        self.winner_mark.setGeometry(QtCore.QRect(0, 0, 50, 50))
+        self.winner_mark.setMinimumSize(QtCore.QSize(50, 50))
+        self.winner_mark.setMaximumSize(QtCore.QSize(50, 50))
+        self.winner_mark.setStyleSheet("")
+        self.winner_mark.setText("")
+        self.winner_mark.setScaledContents(True)
+        self.winner_mark.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.winner_mark.setObjectName("winner_mark")
+        self.draw = QtWidgets.QLabel(parent=self.frame_winner_announce)
+        self.draw.setGeometry(QtCore.QRect(0, 0, 100, 50))
+        self.draw.setMinimumSize(QtCore.QSize(100, 50))
+        self.draw.setMaximumSize(QtCore.QSize(100, 50))
+        self.draw.setStyleSheet("#draw{\n"
+"color: rgba(255,183,67,255);\n"
+"font: 900 24pt \"Arial Black\";\n"
+"background-color: transparent;\n"
+"}")
+        self.draw.setText("")
+        self.draw.setScaledContents(True)
+        self.draw.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.draw.setObjectName("draw")
+        self.verticalLayout_5.addWidget(self.frame_winner_announce, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.horizontalLayout.addWidget(self.frame_announce)
         self.verticalLayout_4.addWidget(self.frame_menu, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
         self.stackedwidget_content.addWidget(self.page_2_game)
         self.verticalLayout.addWidget(self.stackedwidget_content)
@@ -585,12 +669,5 @@ class Ui_MainWindow(object):
         self.button_hard_mode.setText(_translate("MainWindow", "Hard Mode"))
         self.button_exit.setText(_translate("MainWindow", "Exit"))
         self.by_anil_ergan.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">by Anıl ERGAN</p></body></html>"))
-        self.mark_32.setText(_translate("MainWindow", "RadioButton"))
-        self.mark_31.setText(_translate("MainWindow", "RadioButton"))
-        self.mark_21.setText(_translate("MainWindow", "RadioButton"))
-        self.mark_12.setText(_translate("MainWindow", "RadioButton"))
-        self.mark_33.setText(_translate("MainWindow", "RadioButton"))
-        self.mark_23.setText(_translate("MainWindow", "RadioButton"))
-        self.mark_22.setText(_translate("MainWindow", "RadioButton"))
         self.button_reset.setText(_translate("MainWindow", "Reset"))
         self.button_menu.setText(_translate("MainWindow", "Menu"))

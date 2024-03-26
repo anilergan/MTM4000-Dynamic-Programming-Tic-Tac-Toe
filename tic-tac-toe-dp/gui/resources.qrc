@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>crown.png</file>
+    <file>o.png</file>
+    <file>o_crown.png</file>
+    <file>o_red.png</file>
+    <file>tic-tac-toe.png</file>
+    <file>x.png</file>
+    <file>x_crown.png</file>
+    <file>x_red.png</file>
+  </qresource>
+</RCC>
