@@ -100,23 +100,13 @@ class MDP(play_tic_tac_toe):
 
 
 
-    def transition_function(self, state, all_s_primes):
+    def transition_function(self, state):
         """
         The probability of each action that can be taken for a given state
         """
-        rival_ultimate_action = False
-        for s_prime in all_s_primes:
-            if self.reward_function(s_prime): rival_ultimate_action = True
-        
-        # If rival has a action which wins the game, rival make that action, indeed!
-        if rival_ultimate_action:
-            for s_prime in all_s_primes:
-                if self.reward_function(s_prime):
-                    return 1
-                else:
-                    return 0
-        else: 
-            return 1 / (len(self.actions[state]) - 1)
+
+       
+        return 1 / (len(self.actions[state]) - 1)
 
 
 

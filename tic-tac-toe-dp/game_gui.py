@@ -1,7 +1,7 @@
 import numpy as np
+
 import sys
 sys.path.append("tic-tac-toe-dp//gui")
-
 from xox import Ui_MainWindow
 import resources_rc
 
@@ -9,8 +9,7 @@ import resources_rc
 from play import play_tic_tac_toe as PlayTicTacToe
 
 # User Interface Libs (PyQt6)
-from PyQt6.QtWidgets import QMainWindow, QApplication, QPushButton
-from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QMainWindow, QApplication, QPushButton, QLabel
 from PyQt6.QtGui import QPixmap, QIcon
 
 
@@ -97,6 +96,8 @@ class AppWindow(QMainWindow, PlayTicTacToe):
 
 
         PlayTicTacToe.__init__(self)
+        
+        self.reset_game_page()
 
         func()
         
@@ -235,6 +236,13 @@ class AppWindow(QMainWindow, PlayTicTacToe):
         for button in self.ui.frame_game.findChildren(QPushButton):
             button.setIcon(QIcon()) 
             button.setStyleSheet("")
+        
+        for row in range(3):
+                for col in range(3):
+                    coo = str(row + 1) + str(col + 1)
+                    cell = self.findChild(QLabel, f"value_cell_{coo}")
+                    cell.setText("")
+                        
 
 
 
@@ -309,8 +317,6 @@ class AppWindow(QMainWindow, PlayTicTacToe):
 
 
 
-
-
     # Game Dynamics
     def func_mark(self, cell, agent=None):
 
@@ -340,10 +346,29 @@ class AppWindow(QMainWindow, PlayTicTacToe):
                 "border-radius: 15px"
                 "}")
                 return True
-
             
 
+        def display_action_values():
+            cell_values = self.agent.action_values_dic[tuple(self.old_board.flatten())]
 
+            if not cell_values: 
+                Exception('Value is not valid by the state:\n', self.old_board)
+            
+
+            order = 0
+            for row in range(3):
+                for col in range(3):
+                    coo = str(row + 1) + str(col + 1)
+                    cell = self.findChild(QLabel, f"value_cell_{coo}")
+                    if self.old_board[row, col] == 0:
+                        cell.setText(str(cell_values[order]))
+                        order += 1
+                    else: 
+                        cell.setText("")
+                    
+
+
+    
         # If attemt to clicked a button which is marked do nothing.
         row, col = list(cell)
         row, col = int(row), int(col)
@@ -365,13 +390,15 @@ class AppWindow(QMainWindow, PlayTicTacToe):
                 if draw_check(): 
                     return
                 
-
-                
-
                 # Let agent moves 
                 self.agent_plays()
             
             else:
+
+                object_name = type(self.agent).__name__
+                if object_name == "the_master":
+                    display_action_values()
+
                 if super().win(board=self.agent.game_matrix): 
                     win_func()
                     return
@@ -404,18 +431,16 @@ class AppWindow(QMainWindow, PlayTicTacToe):
             if draw_check(): 
                 return
 
-            
-
             self.move_turn += 1
 
 
     def agent_plays(self):
            
-        old_board = self.agent.game_matrix.copy()
+        self.old_board = self.agent.game_matrix.copy()
         self.agent.agent_move(self.agent_mark - 1) #It represent turn of agent, if self.agent_mark == 1 it means agent plays x and turn must be 0 and vice versa.
         new_board = self.agent.game_matrix.copy()
         
-        cell_coordinate = np.where(new_board!=old_board)
+        cell_coordinate = np.where(new_board!=self.old_board)
         row, col = cell_coordinate
         
         # we added 1 to coordinates becouse game matrix index starts in zero to two but board cell's name starts in one to three 

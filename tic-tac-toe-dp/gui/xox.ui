@@ -113,7 +113,7 @@ background-color: rgb(248, 249, 249);
        <enum>QFrame::Raised</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_1_menu">
        <property name="layoutDirection">
@@ -355,7 +355,6 @@ QLabel{
 font: 14pt &quot;Arial&quot;;
 color: rgba(12,16,25);
 padding: 0 0 0 5;
-
 }
 
 QRadioButton {
@@ -663,8 +662,9 @@ border: 2px solid rgb(233,20,76)
           </property>
           <property name="styleSheet">
            <string notr="true">#frame_game * {
-font: italic 24pt &quot;Arial&quot;;
-color:  rgba(12,16,25, 50)
+font: italic 18pt &quot;Arial&quot;;
+color:  rgba(12,16,25, 150)
+
 }
 
 #frame_game {
@@ -688,14 +688,14 @@ QPushButton::hover {
 background-color: rgba(20,124,236, 20)
 }
 
-
 QPushButton {
 width: 100px;
 height: 100px;
 
 }
 
-QLabel {background-color: transparent;}</string>
+QLabel {background-color:transparent}
+</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -765,32 +765,39 @@ QLabel {background-color: transparent;}</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>200</width>
-                <height>200</height>
+                <width>180</width>
+                <height>180</height>
                </size>
               </property>
              </widget>
              <widget class="QLabel" name="value_cell_13">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>150</width>
-                <height>150</height>
+                <x>10</x>
+                <y>10</y>
+                <width>191</width>
+                <height>51</height>
                </rect>
               </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
               </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
               <property name="text">
                <string/>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+              <property name="margin">
+               <number>12</number>
+              </property>
+              <property name="indent">
+               <number>-1</number>
               </property>
              </widget>
-             <zorder>value_cell_13</zorder>
-             <zorder>mark_13</zorder>
             </widget>
            </item>
            <item row="2" column="3">
@@ -827,18 +834,18 @@ QLabel {background-color: transparent;}</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>200</width>
-                <height>200</height>
+                <width>180</width>
+                <height>180</height>
                </size>
               </property>
              </widget>
              <widget class="QLabel" name="value_cell_32">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>150</width>
-                <height>150</height>
+                <x>10</x>
+                <y>10</y>
+                <width>191</width>
+                <height>51</height>
                </rect>
               </property>
               <property name="layoutDirection">
@@ -848,11 +855,12 @@ QLabel {background-color: transparent;}</string>
                <string/>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+              <property name="margin">
+               <number>12</number>
               </property>
              </widget>
-             <zorder>value_cell_32</zorder>
-             <zorder>mark_32</zorder>
             </widget>
            </item>
            <item row="2" column="2">
@@ -889,18 +897,18 @@ QLabel {background-color: transparent;}</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>200</width>
-                <height>200</height>
+                <width>180</width>
+                <height>180</height>
                </size>
               </property>
              </widget>
              <widget class="QLabel" name="value_cell_31">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>150</width>
-                <height>150</height>
+                <x>10</x>
+                <y>10</y>
+                <width>191</width>
+                <height>51</height>
                </rect>
               </property>
               <property name="layoutDirection">
@@ -910,11 +918,12 @@ QLabel {background-color: transparent;}</string>
                <string/>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+              <property name="margin">
+               <number>12</number>
               </property>
              </widget>
-             <zorder>value_cell_31</zorder>
-             <zorder>mark_31</zorder>
             </widget>
            </item>
            <item row="0" column="2">
@@ -946,7 +955,7 @@ QLabel {background-color: transparent;}</string>
                 <x>0</x>
                 <y>0</y>
                 <width>190</width>
-                <height>190</height>
+                <height>191</height>
                </rect>
               </property>
               <property name="styleSheet">
@@ -957,8 +966,8 @@ QLabel {background-color: transparent;}</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>200</width>
-                <height>200</height>
+                <width>180</width>
+                <height>180</height>
                </size>
               </property>
               <property name="checkable">
@@ -971,10 +980,10 @@ QLabel {background-color: transparent;}</string>
              <widget class="QLabel" name="value_cell_11">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>150</width>
-                <height>150</height>
+                <x>10</x>
+                <y>10</y>
+                <width>191</width>
+                <height>51</height>
                </rect>
               </property>
               <property name="layoutDirection">
@@ -984,11 +993,12 @@ QLabel {background-color: transparent;}</string>
                <string/>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+              <property name="margin">
+               <number>12</number>
               </property>
              </widget>
-             <zorder>value_cell_11</zorder>
-             <zorder>mark_11</zorder>
             </widget>
            </item>
            <item row="1" column="2">
@@ -1025,18 +1035,18 @@ QLabel {background-color: transparent;}</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>200</width>
-                <height>200</height>
+                <width>180</width>
+                <height>180</height>
                </size>
               </property>
              </widget>
              <widget class="QLabel" name="value_cell_21">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>150</width>
-                <height>150</height>
+                <x>10</x>
+                <y>10</y>
+                <width>191</width>
+                <height>51</height>
                </rect>
               </property>
               <property name="layoutDirection">
@@ -1046,11 +1056,12 @@ QLabel {background-color: transparent;}</string>
                <string/>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+              <property name="margin">
+               <number>12</number>
               </property>
              </widget>
-             <zorder>value_cell_21</zorder>
-             <zorder>mark_21</zorder>
             </widget>
            </item>
            <item row="0" column="3">
@@ -1079,7 +1090,7 @@ QLabel {background-color: transparent;}</string>
                 <x>0</x>
                 <y>0</y>
                 <width>190</width>
-                <height>190</height>
+                <height>191</height>
                </rect>
               </property>
               <property name="text">
@@ -1087,8 +1098,8 @@ QLabel {background-color: transparent;}</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>200</width>
-                <height>200</height>
+                <width>180</width>
+                <height>180</height>
                </size>
               </property>
               <property name="checkable">
@@ -1101,10 +1112,10 @@ QLabel {background-color: transparent;}</string>
              <widget class="QLabel" name="value_cell_12">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>150</width>
-                <height>150</height>
+                <x>10</x>
+                <y>10</y>
+                <width>191</width>
+                <height>51</height>
                </rect>
               </property>
               <property name="layoutDirection">
@@ -1114,11 +1125,12 @@ QLabel {background-color: transparent;}</string>
                <string/>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+              <property name="margin">
+               <number>12</number>
               </property>
              </widget>
-             <zorder>value_cell_12</zorder>
-             <zorder>mark_12</zorder>
             </widget>
            </item>
            <item row="2" column="4">
@@ -1155,18 +1167,18 @@ QLabel {background-color: transparent;}</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>200</width>
-                <height>200</height>
+                <width>180</width>
+                <height>180</height>
                </size>
               </property>
              </widget>
              <widget class="QLabel" name="value_cell_33">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>150</width>
-                <height>150</height>
+                <x>10</x>
+                <y>10</y>
+                <width>191</width>
+                <height>51</height>
                </rect>
               </property>
               <property name="layoutDirection">
@@ -1176,11 +1188,12 @@ QLabel {background-color: transparent;}</string>
                <string/>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+              <property name="margin">
+               <number>12</number>
               </property>
              </widget>
-             <zorder>value_cell_33</zorder>
-             <zorder>mark_33</zorder>
             </widget>
            </item>
            <item row="1" column="4">
@@ -1217,18 +1230,18 @@ QLabel {background-color: transparent;}</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>200</width>
-                <height>200</height>
+                <width>180</width>
+                <height>180</height>
                </size>
               </property>
              </widget>
              <widget class="QLabel" name="value_cell_23">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>150</width>
-                <height>150</height>
+                <x>10</x>
+                <y>10</y>
+                <width>191</width>
+                <height>51</height>
                </rect>
               </property>
               <property name="layoutDirection">
@@ -1238,11 +1251,12 @@ QLabel {background-color: transparent;}</string>
                <string/>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+              <property name="margin">
+               <number>12</number>
               </property>
              </widget>
-             <zorder>value_cell_23</zorder>
-             <zorder>mark_23</zorder>
             </widget>
            </item>
            <item row="1" column="3">
@@ -1282,18 +1296,18 @@ QLabel {background-color: transparent;}</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>200</width>
-                <height>200</height>
+                <width>180</width>
+                <height>180</height>
                </size>
               </property>
              </widget>
              <widget class="QLabel" name="value_cell_22">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>150</width>
-                <height>150</height>
+                <x>10</x>
+                <y>10</y>
+                <width>191</width>
+                <height>51</height>
                </rect>
               </property>
               <property name="layoutDirection">
@@ -1303,11 +1317,12 @@ QLabel {background-color: transparent;}</string>
                <string/>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+              <property name="margin">
+               <number>12</number>
               </property>
              </widget>
-             <zorder>value_cell_22</zorder>
-             <zorder>mark_22</zorder>
             </widget>
            </item>
           </layout>

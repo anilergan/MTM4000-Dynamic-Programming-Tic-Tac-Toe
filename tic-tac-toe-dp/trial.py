@@ -36,7 +36,7 @@ class Computer(Play):
     
     def get_game_att(self):
         return self.game_att
-"""
+
 
 class Game():
     def __init__(self):
@@ -84,9 +84,20 @@ class Ui(Play):
         
 
 Ui_obj = Ui()
-        
+"""
 
-        
+# action_dic = {
+#     (1,2,0): [2],
+#     (2,0,0): [1,2],
+#     (0,2,1): [0]
+# }
+
+# for key, val in action_dic.items():
+#     print(key, val)
+
+liste = [1,2,3]
+liste2 = [0 for i in liste]
+print(liste2)
 
 
 # naive_agent_object = NaiveAgent()

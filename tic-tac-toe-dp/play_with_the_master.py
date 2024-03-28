@@ -27,6 +27,7 @@ class the_master(computer):
         if mark_num == 1: mark = 'X'
         elif mark_num ==2: mark = 'O'
         
+
         policy_path = f"tic-tac-toe-dp\policies\policy_iteration_{mark}.json"
 
         with open(policy_path, 'r') as file:
@@ -36,7 +37,19 @@ class the_master(computer):
         
         policy_dic = {self.str_to_tuple(key): value for key, value in policy_dic.items()}
 
-        game_matrix = self.game_matrix()
+        
+
+        action_value_path = f"tic-tac-toe-dp\\action-values\\action_values_{mark}.json"
+
+        with open(action_value_path, 'r') as file:
+            actio_values_json = file.read()
+
+        self.action_values_dic = json.loads(actio_values_json)
+        
+        self.action_values_dic = {self.str_to_tuple(key): value for key, value in self.action_values_dic.items()}
+
+
+        game_matrix = self.game_matrix
 
         best_action = policy_dic[tuple(game_matrix.flatten())]
 
@@ -83,7 +96,7 @@ class the_master(computer):
 
 
 
-    def check_values_of_a_status(status):
+    def check_values_of_a_status(status): pass
         
 
 

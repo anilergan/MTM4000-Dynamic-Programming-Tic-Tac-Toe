@@ -21,11 +21,9 @@ class DP(MDP):
         self.initialize_P()
 
         self.action_values = {}
-        for state in self.states:
-            action_values_list = []
-            for _ in self.actions:
-                action_values_list.append(0)
-            self.action_values[state] = action_values_list
+        # for state, action in self.actions.items():
+        #     if action: 
+        #         self.action_values[state] = [0 for a in action]
 
         
 
@@ -62,14 +60,21 @@ class DP(MDP):
                 # First let's evaluate the transitions well. First make s_primes as a list and push it into transition function. Remember to adjust transition function appropriate for that.
 
 
-                # Check every single s_prime and list them. So in possible next state function we'll be able to observe if rival has a winning action according to our move. If there is, so that's possibility is absolute. 
-                for action in self.actions[state]:
-                    all_s_primes = []
-                    for s_prime in super().possible_next_states(state, action):
-                        if s_prime == 0 or s_prime == 1: 
-                            continue
-                        else:
-                            all_s_primes.append(s_prime)
+                # Check every single s_prime and list them. So in possible next state function we'll be able to observe if rival has a winning action according to our move. If there is, so that's possibility is absolute.
+                 
+                # for action in self.actions[state]:
+                #     all_s_primes = []
+                #     for s_prime in super().possible_next_states(state, action):
+                #         if s_prime == 0 or s_prime == 1: 
+                #             continue
+                #         else:
+                #             all_s_primes.append(s_prime)
+                
+                # caution = False
+                # for s_prime in all_s_primes:
+                #     if self.reward_function(s_prime) == -1:
+                #         caution = True
+
                 
                 action_value_list = []
                 for action in self.actions[state]:
@@ -81,12 +86,12 @@ class DP(MDP):
                             action_value = 0
                         
                         else:
-                            action_value = super().transition_function(state, all_s_primes)* (super().reward_function(state) + self.gamma * self.values[s_prime])
+                            action_value = super().transition_function(state) * (super().reward_function(state) + self.gamma * self.values[s_prime])
                         
 
                         self.values[state] += action_value
                 
-                    action_value_list.append(action_value)
+                    action_value_list.append(round(action_value, 2))
                     
                 self.action_values[state] = action_value_list
 
@@ -129,12 +134,12 @@ class DP(MDP):
                     elif s_prime == 0:
                         action_value = 0
                     else:
-                        action_value += super().transition_function(state, all_s_primes) * (super().reward_function(state) + self.gamma * self.values[s_prime])
-                
+                        action_value += super().transition_function(state) * (super().reward_function(state) + self.gamma * self.values[s_prime])  
 
                 if action_value > best_value:
                         best_value = action_value 
                         best_action = action
+                
             
             self.policy[state] = best_action
 
