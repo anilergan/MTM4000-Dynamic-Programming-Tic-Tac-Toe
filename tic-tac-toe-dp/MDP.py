@@ -100,13 +100,25 @@ class MDP(play_tic_tac_toe):
 
 
 
-    def transition_function(self, state):
+    def transition_function(self, state, action, s_p):
         """
         The probability of each action that can be taken for a given state
         """
+        all_s_primes = self.possible_next_states(state, action)
 
-       
-        return 1 / (len(self.actions[state]) - 1)
+        catuion = False
+        for s_p in all_s_primes:
+            if self.reward_function(s_p) == -1:
+                catuion = True
+        
+        if catuion and self.reward_function(s_p) == -1:
+            return 1
+        
+        elif catuion and self.reward_function(s_p) == 0:
+            return 0
+        
+        else: 
+            return 1 / (len(self.actions[state]) - 1)
 
 
 
@@ -181,5 +193,4 @@ class MDP(play_tic_tac_toe):
     #     # if the game is not over, return 1/number of possible actions for O
     #     else: return 1 if action == self.policy[state] else 0
         
-
 
