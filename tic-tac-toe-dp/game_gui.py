@@ -114,7 +114,7 @@ class AppWindow(QMainWindow, PlayTicTacToe):
     def func_button_hard_mode(self):
 
         from play_with_the_master import the_master as TheMaster
-        self.agent = TheMaster()
+        self.agent = TheMaster(dp_method='value_iteration')
 
         if self.user_mark == 2: self.agent_plays()
 
@@ -133,7 +133,7 @@ class AppWindow(QMainWindow, PlayTicTacToe):
 
     
     def func_button_reset(self): 
-        self.agent = type(self.agent)()
+        self.agent = type(self.agent)(dp_method='value_iteration')
 
         # If it is self-play game:
         try: self.move_turn
@@ -361,7 +361,7 @@ class AppWindow(QMainWindow, PlayTicTacToe):
                     coo = str(row + 1) + str(col + 1)
                     cell = self.findChild(QLabel, f"value_cell_{coo}")
                     if self.old_board[row, col] == 0:
-                        cell.setText(str(cell_values[order]))
+                        cell.setText(str(round(cell_values[order], 2)))
                         order += 1
                     else: 
                         cell.setText("")

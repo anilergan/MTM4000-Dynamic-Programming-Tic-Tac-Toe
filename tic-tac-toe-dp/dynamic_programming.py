@@ -21,12 +21,14 @@ class DP(MDP):
         self.policy = {}
         self.initialize_P()
 
-        self.action_values = {}
+        self.action_values_PI = {}
+        self.action_values_VI = {}
         # for state, action in self.actions.items():
         #     if action: 
         #         self.action_values[state] = [0 for a in action]
 
-        
+
+
 
     def get_action_values(self, status):
         return self.action_values[status]
@@ -203,46 +205,63 @@ class DP(MDP):
         Output a deterministic policy, π ≈ π* such that
             π(s) 0 argmax[a](∑[s',r] p(s', r|s, a)[r + γ V(s')])
         """
+        start_time = time()
 
+        epoch = 0
         while True:
+            print(f'Value Iteration Epoch {epoch}')
             delta = 0
-            for state in self.states:
-                
-                for action in self.actions[state]:
-                    all_s_primes = []
-                    for s_prime in super().possible_next_states(state, action):
-                        if s_prime == 0 or s_prime == 1: 
-                            continue
-                        else:
-                            all_s_primes.append(s_prime)    
+            for state in self.states:  
+
+                if state in self.t_states:
+                    self.values[state] = self.reward_function(state)
+                    continue 
 
                 v = self.values[state]
-                max_a = float("-inf")
-                for action in self.actions:
+                
+                action_values_dict = {}
+                a = 0
+                for action in self.actions[state]:
+                    # 3,5,6,7
                     for s_prime in super().possible_next_states(state, action):
-                        a = super().transition_function(s_prime, all_s_primes) * (super().reward_function(state) + self.gamma * self.values[s_prime])
-                        if a > max_a: max_a = a
+                        if s_prime == 1: a += 1
 
-                self.values[state] = max_a
-                if delta < abs(v-self.values[state]): delta = abs(v-self.values[state])
-                if delta < self.epsilon: break
+                        elif s_prime == 0: a += 0
+                
+                        else: a += super().transition_function(state, action, s_prime) * (super().reward_function(state) + self.gamma * self.values[s_prime])
 
+                    action_values_dict[action] = a
+                
+                max_value = float("-inf")
+                max_value_action = None
+                for action, value in action_values_dict.items():
+                        if value > max_value: 
+                            max_value = value
+                            max_value_action = action
+                
+                self.action_values_VI[state] = list(action_values_dict.values())
+                
+                self.policy[state] = max_value_action
+                self.values[state] = max_value
 
-            # for state in self.states:
-        # Gamma: Discount factor which represents coefficient determines the importance of subsequent states in determinining policy for current state
-        # Epsilon: That represents the number (which is proposed to be a very small) of condition to break infinitive loop 
-        # Delta: Value variation
+                delta  = max(delta, abs(v - self.values[state]))
+
+            if delta < self.epsilon: break
+            else: 
+                epoch += 1
+                print(f'  Delta: {delta}')
         
-        # BELLMAN EQUATION NOTATION MEANINGS
-        # p(s', r|s, a): Each next state's transition probability
-        # [r + γ V(s')]: 
-            # r: The instant reward
-            # γ: Discount factor to consider next states in current state
-            # V(s'): Calculated value function for next state
-        
-        delta = 0
+        self.policy = {key: value for key, value in self.policy.items() if value is not None}
 
-         # possible states only due to agent's mark
+        end_time = time()
+
+        progress_sec = end_time - start_time
+        progress_min = int(progress_sec / 60)
+        progress_sec = round(progress_sec % 60)
+
+        print("Value Iteration has taken {} min {} sec".format(progress_min, progress_sec))
+
+        return self.policy, self.action_values_VI
          
 
 

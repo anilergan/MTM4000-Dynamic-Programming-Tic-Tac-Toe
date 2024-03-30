@@ -117,8 +117,85 @@ class MDP(play_tic_tac_toe):
         elif catuion and self.reward_function(s_p) == 0:
             return 0
         
+        elif self.opponents_fury(state, action):
+            s_p_transtions = self.opponents_fury(state, action)
+            return s_p_transtions[s_p]
+
+        
         else: 
             return 1 / (len(self.actions[state]) - 1)
+
+
+    def opponents_fury(self, state, action):
+        """
+        If opponent has a action which avoids your next action that wins the game, opponent takes that action definetly.
+        """
+        opp_fury = None
+        opp_transitions = {}
+
+        if self.mark == 1: opp_mark = 2
+        if self.mark == 2: opp_mark = 1
+
+        s_a = list(state) 
+        s_a[action] = self.mark 
+        
+        calm_actions = []
+        s_a_actions = []
+        for index, cell in s_a:
+            if cell == 0:
+                s_a_actions.append(index)
+        
+        for s_a_act in s_a_actions:
+            s_a_temp = s_a.copy()
+            s_a_temp[s_a_act] = opp_mark
+
+            s_a_a_actions = []
+            for index, cell in s_a_temp:
+                if cell == 0:
+                    s_a_a_actions.append(index)
+            
+            for s_a_a_act in s_a_a_actions:
+                s_a_a_temp = s_a_temp.copy()
+                s_a_a_temp[s_a_a_act] = self.mark
+
+                if self.win(s_a_a_temp): 
+                    opp_fury = s_a_a_act
+                
+                else: 
+                    calm_actions.append(s_a_a_act)
+
+            
+            if opp_fury: 
+                s_a_temp = s_a.copy()
+                s_a_temp[opp_fury] = opp_mark
+                opp_transitions[s_a_temp] = 1
+
+                for calm_action in calm_actions:
+                    s_a_temp = s_a.copy()
+                    s_a_temp[calm_action] = opp_mark
+                    opp_transitions[s_a_temp] = 0
+                
+                return opp_transitions
+                
+            
+            else:
+                return None
+
+
+
+
+
+
+
+
+
+
+            
+
+
+            
+
+            
 
 
 

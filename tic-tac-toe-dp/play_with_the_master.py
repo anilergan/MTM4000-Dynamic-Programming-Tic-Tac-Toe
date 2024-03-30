@@ -4,7 +4,17 @@ import numpy as np
 import json, ast
 
 class the_master(computer):
-    def __init__(self): # random mark is selected for now
+    def __init__(self, dp_method): # random mark is selected for now
+        """
+        dp_method parameter can be only ['value_iteration', 'policy iteration'] as string
+        """
+        check_list = ['value_iteration', 'policy iteration']
+        if dp_method not in check_list:
+            raise Exception("dp_method parameter can be only ['value_iteration', 'policy iteration'] as string")
+        
+        self.dp_method = dp_method
+        if self.dp_method == 'policy_iteration': self.abb = 'PI'
+        else: self.abb = 'VI'
         super().__init__() 
 
     def play(self):
@@ -28,7 +38,7 @@ class the_master(computer):
         elif mark_num ==2: mark = 'O'
         
 
-        policy_path = f"tic-tac-toe-dp\policies\policy_iteration_{mark}.json"
+        policy_path = f"tic-tac-toe-dp\policies\{self.dp_method}_{mark}.json"
 
         with open(policy_path, 'r') as file:
             policy_json = file.read()
@@ -39,7 +49,7 @@ class the_master(computer):
 
         
 
-        action_value_path = f"tic-tac-toe-dp\\action-values\\action_values_{mark}.json"
+        action_value_path = f"tic-tac-toe-dp\\action-values\\action_values_{mark}_{self.abb}.json"
 
         with open(action_value_path, 'r') as file:
             actio_values_json = file.read()
