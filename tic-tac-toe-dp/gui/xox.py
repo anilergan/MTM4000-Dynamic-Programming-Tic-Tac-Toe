@@ -32,9 +32,9 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "#frame_nam, #frame_spm, #frame_tmm {\n"
-"background-color:rgb(0,0,0,8);\n"
+"background-color:rgba(0,0,0,8);\n"
 "border-radius: 25px;\n"
-"border: 2px solid rgb(0,0,0,24)\n"
+"border: 2px solid rgba(0,0,0,24)\n"
 "\n"
 "}")
         self.centralwidget.setObjectName("centralwidget")
@@ -170,7 +170,7 @@ class Ui_MainWindow(object):
 "\n"
 "QLabel{\n"
 "font: 14pt \"Arial\";\n"
-"color: rgba(12,16,25);\n"
+"color: rgb(12,16,25);\n"
 "padding: 0 0 0 5;\n"
 "}\n"
 "\n"
@@ -199,8 +199,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.frame_mark_selection)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.text_mark_selection = QtWidgets.QLabel(parent=self.frame_mark_selection)
-        self.text_mark_selection.setStyleSheet("\n"
-"")
+        self.text_mark_selection.setStyleSheet("")
         self.text_mark_selection.setObjectName("text_mark_selection")
         self.horizontalLayout_5.addWidget(self.text_mark_selection)
         self.radio_button_x = QtWidgets.QRadioButton(parent=self.frame_mark_selection)
@@ -311,21 +310,22 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "#frame_game {\n"
-"background-color: rgb(12,16,25)\n"
+"background-color: rgb(202, 207, 210);\n"
 "\n"
 "}\n"
 "QFrame {\n"
 "background-color: rgb(248, 249, 249);\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton {\n"
 "background-color: transparent;\n"
 "}\n"
 "\n"
-"#frame_cell_11, #mark_11  {border-top-left-radius: 20px;}\n"
-"#frame_cell_13, #mark_13 {border-top-right-radius: 20px;}\n"
-"#frame_cell_31, #mark_31  {border-bottom-left-radius: 20px;}\n"
-"#frame_cell_33, #mark_33  {border-bottom-right-radius: 20px;}\n"
+"#frame_cell_11, #mark_11  {border-top-left-radius: 15px;}\n"
+"#frame_cell_13, #mark_13 {border-top-right-radius: 15px;}\n"
+"#frame_cell_31, #mark_31  {border-bottom-left-radius: 15px;}\n"
+"#frame_cell_33, #mark_33  {border-bottom-right-radius: 15px;}\n"
 "\n"
 "QPushButton::hover {\n"
 "background-color: rgba(20,124,236, 20)\n"
@@ -412,7 +412,7 @@ class Ui_MainWindow(object):
         self.frame_cell_11.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_cell_11.setObjectName("frame_cell_11")
         self.mark_11 = QtWidgets.QPushButton(parent=self.frame_cell_11)
-        self.mark_11.setGeometry(QtCore.QRect(0, 0, 190, 191))
+        self.mark_11.setGeometry(QtCore.QRect(0, 0, 190, 190))
         self.mark_11.setStyleSheet("")
         self.mark_11.setText("")
         self.mark_11.setIconSize(QtCore.QSize(180, 180))
@@ -451,7 +451,7 @@ class Ui_MainWindow(object):
         self.frame_cell_12.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_cell_12.setObjectName("frame_cell_12")
         self.mark_12 = QtWidgets.QPushButton(parent=self.frame_cell_12)
-        self.mark_12.setGeometry(QtCore.QRect(0, 0, 190, 191))
+        self.mark_12.setGeometry(QtCore.QRect(0, 0, 190, 190))
         self.mark_12.setText("")
         self.mark_12.setIconSize(QtCore.QSize(180, 180))
         self.mark_12.setCheckable(False)

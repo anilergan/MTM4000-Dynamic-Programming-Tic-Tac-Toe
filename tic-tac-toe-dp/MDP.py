@@ -17,6 +17,11 @@ class MDP(play_tic_tac_toe):
         if self.mark not in [1, 2]:
             raise ValueError("Value must be either 1 or 2.")
         
+        if self.mark == 1:
+            self.opp_mark = 2
+
+        else: self.opp_mark = 1
+        
         # LEGAL STATES
         self.states = [] 
         self.generate_all_configs() # All Configurations
@@ -100,102 +105,77 @@ class MDP(play_tic_tac_toe):
 
 
 
-    def transition_function(self, state, action, s_p):
+    def transition_function(self, state, a):
         """
         The probability of each action that can be taken for a given state
         """
-        all_s_primes = self.possible_next_states(state, action)
+        
 
-        catuion = False
-        for s_p in all_s_primes:
-            if self.reward_function(s_p) == -1:
-                catuion = True
-        
-        if catuion and self.reward_function(s_p) == -1:
-            return 1
-        
-        elif catuion and self.reward_function(s_p) == 0:
-            return 0
-        
-        elif self.opponents_fury(state, action):
-            s_p_transtions = self.opponents_fury(state, action)
-            return s_p_transtions[s_p]
-
-        
-        else: 
-            return 1 / (len(self.actions[state]) - 1)
+        return 1 / (len(self.actions[state]) - 1)
 
 
-    def opponents_fury(self, state, action):
+    def threat_detector(self, state, a):
+        s_a = list(state).copy()
+        s_a[a] = self.mark
+        
+        t_s = s_a.copy()
+        t_s_actions = []
+        for index, cell in enumerate(t_s):
+            if cell == 0:
+                t_s_actions.append(index)
+        
+        opp_definite_action = None
+        for action in t_s_actions:
+            t_s_a = list(t_s).copy()
+            t_s_a[action] = self.mark
+
+            if super().win(t_s_a):
+                opp_definite_action = action
+        
+        if opp_definite_action:
+            s_a[opp_definite_action] = self.opp_mark
+            return tuple(s_a)
+
+
+        
+        
+
+
+
+    def opponents_fury(self, s_a):
         """
         If opponent has a action which avoids your next action that wins the game, opponent takes that action definetly.
         """
-        opp_fury = None
-        opp_transitions = {}
-
-        if self.mark == 1: opp_mark = 2
-        if self.mark == 2: opp_mark = 1
-
-        s_a = list(state) 
-        s_a[action] = self.mark 
-        
-        calm_actions = []
         s_a_actions = []
-        for index, cell in s_a:
+        for index, cell in enumerate(s_a):
             if cell == 0:
                 s_a_actions.append(index)
+
+
+        for action in s_a_actions:
+            s_prime = list(s_a).copy()
+            s_prime[action] = self.opp_mark
+            
+            s_prime_action = s_prime.copy()
         
-        for s_a_act in s_a_actions:
-            s_a_temp = s_a.copy()
-            s_a_temp[s_a_act] = opp_mark
-
-            s_a_a_actions = []
-            for index, cell in s_a_temp:
-                if cell == 0:
-                    s_a_a_actions.append(index)
+            s_prime_acions_list = []
+            for index, cell in enumerate(s_prime_action):
+                if cell == 0: s_prime_acions_list.append(index)
             
-            for s_a_a_act in s_a_a_actions:
-                s_a_a_temp = s_a_temp.copy()
-                s_a_a_temp[s_a_a_act] = self.mark
-
-                if self.win(s_a_a_temp): 
-                    opp_fury = s_a_a_act
+            opp_fury = None
+            for action in s_prime_acions_list:
+                s_prime_action[action] = self.mark
+                if super().win(s_prime_action): # If agent wins
+                    opp_fury = action
+                    break
                 
-                else: 
-                    calm_actions.append(s_a_a_act)
-
-            
-            if opp_fury: 
-                s_a_temp = s_a.copy()
-                s_a_temp[opp_fury] = opp_mark
-                opp_transitions[s_a_temp] = 1
-
-                for calm_action in calm_actions:
-                    s_a_temp = s_a.copy()
-                    s_a_temp[calm_action] = opp_mark
-                    opp_transitions[s_a_temp] = 0
+            if opp_fury:
+                for action in s_a_actions:
+                    if action == opp_fury:
+                        s_a[action] = self.opp_mark
+                        return s_a # S Prime
                 
-                return opp_transitions
-                
-            
-            else:
-                return None
 
-
-
-
-
-
-
-
-
-
-            
-
-
-            
-
-            
 
 
 
@@ -203,38 +183,23 @@ class MDP(play_tic_tac_toe):
         """
         This is the function returns very next possible states as tuple
         """
-        if self.mark == 1: rival_mark = 2
-        if self.mark == 2: rival_mark = 1
 
-        s_a = list(state) # State + My Action
-        # ex [[m  m  X]   
-        #     [X  O  O]
-        #     [m  m  X]]
-        # [0,0,1,1,2,2,0,0,1] = [0,1,6,7]
-        # state = [0,0,1,1,2,2,0,0,1]
+        s_a = list(state) 
         
+        s_a[action] = self.mark 
 
-        s_a[action] = self.mark # State + My Action
-        # ex [[m  O  X]   
-        #     [X  O  O]
-        #     [m  m  X]]
-        # [0,2,1,1,2,2,0,0,1] = [0,1*,6,7]
-        # s_a = [0,2,1,1,2,2,0,0,1]
+        if self.win(s_a):
+            return []
 
-        if super().win(s_a): return [1]
-        elif s_a.count(0) == 0: return [0] 
-        # If I win the game after my action or the game ends draw, there is no possible s_a_a for rival.
-        
-        all_possible_s_a_a = [] # State + My Action + Rival Action -> Possible States (s_a_a)
-        for indx, cell in enumerate(s_a):
-            s_a_a = s_a.copy()
+        s_primes = []
+        for index, cell in enumerate(s_a):
             if cell == 0:
-                s_a_a[indx] = rival_mark
-                all_possible_s_a_a.append(tuple(s_a_a))
+                s_prime = s_a.copy()
+                s_prime[index] = self.opp_mark
+                s_primes.append(tuple(s_prime))
         
-
+        return s_primes
         
-        return all_possible_s_a_a
 
 
     def reward_function(self, state):

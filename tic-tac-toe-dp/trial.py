@@ -95,9 +95,14 @@ Ui_obj = Ui()
 # for key, val in action_dic.items():
 #     print(key, val)
 
-liste = [1,2,3]
-liste2 = [0 for i in liste]
-print(liste2)
+class Merhaba():
+    def __init__(self):
+        print('merhaba')
+
+mer = Merhaba()
+
+if type(mer) == Merhaba:
+    print('hey bu merhaba')
 
 
 # naive_agent_object = NaiveAgent()

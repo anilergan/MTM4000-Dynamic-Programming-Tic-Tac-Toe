@@ -8,7 +8,7 @@ class the_master(computer):
         """
         dp_method parameter can be only ['value_iteration', 'policy iteration'] as string
         """
-        check_list = ['value_iteration', 'policy iteration']
+        check_list = ['value_iteration', 'policy_iteration']
         if dp_method not in check_list:
             raise Exception("dp_method parameter can be only ['value_iteration', 'policy iteration'] as string")
         

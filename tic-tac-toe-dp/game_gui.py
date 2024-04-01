@@ -66,6 +66,8 @@ class AppWindow(QMainWindow, PlayTicTacToe):
         
     def func_button_spm(self): 
         # 1) reset game matrix
+        
+        self.mode = 'spm'
 
         self.agent = PlayTicTacToe()
 
@@ -103,6 +105,8 @@ class AppWindow(QMainWindow, PlayTicTacToe):
         
 
     def func_button_easy_mode(self):
+
+        self.mode = 'easy_mode'
         
         from play_with_naive_agent import naive_agent as NaiveAgent
         self.agent = NaiveAgent()
@@ -113,8 +117,10 @@ class AppWindow(QMainWindow, PlayTicTacToe):
 
     def func_button_hard_mode(self):
 
+        self.mode = 'hard_mode'
+
         from play_with_the_master import the_master as TheMaster
-        self.agent = TheMaster(dp_method='value_iteration')
+        self.agent = TheMaster(dp_method='policy_iteration')
 
         if self.user_mark == 2: self.agent_plays()
 
@@ -130,20 +136,27 @@ class AppWindow(QMainWindow, PlayTicTacToe):
         self.mark_selection_warning(undo = True)
         self.ui.stackedwidget_content.setCurrentIndex(0)
 
-
     
     def func_button_reset(self): 
-        self.agent = type(self.agent)(dp_method='value_iteration')
+        if self.mode == 'spm':
+            self.func_button_spm()
 
-        # If it is self-play game:
-        try: self.move_turn
-        except AttributeError: pass
-        else: 
-            self.move_turn = 0
+        elif self.mode == 'easy_mode':
+            self.play_against_computer(self.func_button_easy_mode)
 
-        self.reset_game_page()
+        elif self.mode == 'hard_mode':
+            self.play_against_computer(self.func_button_hard_mode)
+        
 
-        if self.user_mark == 2: self.agent_plays()
+        # # If it is self-play game:
+        # try: self.move_turn
+        # except AttributeError: pass
+        # else: 
+        #     self.move_turn = 0
+
+        # self.reset_game_page()
+
+        # if self.user_mark == 2: self.agent_plays()
 
 
     # ---------------------------------------- 
@@ -447,8 +460,6 @@ class AppWindow(QMainWindow, PlayTicTacToe):
         self.func_mark((str(int(row) + 1) + str(int(col) + 1)), self.agent)
             
             
-
-
 
 
 app = QApplication(sys.argv)

@@ -53,9 +53,9 @@ text-align: left;
 
 
 #frame_nam, #frame_spm, #frame_tmm {
-background-color:rgb(0,0,0,8);
+background-color:rgba(0,0,0,8);
 border-radius: 25px;
-border: 2px solid rgb(0,0,0,24)
+border: 2px solid rgba(0,0,0,24)
 
 }</string>
    </property>
@@ -242,7 +242,7 @@ font: 36pt &quot;Forte&quot;;
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="resources.qrc">:/icons/tic-tac-toe.png</pixmap>
+           <pixmap>:/icons/tic-tac-toe.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -353,7 +353,7 @@ border-radius: 25px;
 
 QLabel{
 font: 14pt &quot;Arial&quot;;
-color: rgba(12,16,25);
+color: rgb(12,16,25);
 padding: 0 0 0 5;
 }
 
@@ -387,8 +387,7 @@ border: None;
               <item>
                <widget class="QLabel" name="text_mark_selection">
                 <property name="styleSheet">
-                 <string notr="true">
-</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string>Mark Selection</string>
@@ -668,21 +667,22 @@ color:  rgba(12,16,25, 150)
 }
 
 #frame_game {
-background-color: rgb(12,16,25)
+background-color: rgb(202, 207, 210);
 
 }
 QFrame {
 background-color: rgb(248, 249, 249);
+
 }
 
 QPushButton {
 background-color: transparent;
 }
 
-#frame_cell_11, #mark_11  {border-top-left-radius: 20px;}
-#frame_cell_13, #mark_13 {border-top-right-radius: 20px;}
-#frame_cell_31, #mark_31  {border-bottom-left-radius: 20px;}
-#frame_cell_33, #mark_33  {border-bottom-right-radius: 20px;}
+#frame_cell_11, #mark_11  {border-top-left-radius: 15px;}
+#frame_cell_13, #mark_13 {border-top-right-radius: 15px;}
+#frame_cell_31, #mark_31  {border-bottom-left-radius: 15px;}
+#frame_cell_33, #mark_33  {border-bottom-right-radius: 15px;}
 
 QPushButton::hover {
 background-color: rgba(20,124,236, 20)
@@ -955,7 +955,7 @@ QLabel {background-color:transparent}
                 <x>0</x>
                 <y>0</y>
                 <width>190</width>
-                <height>191</height>
+                <height>190</height>
                </rect>
               </property>
               <property name="styleSheet">
@@ -1090,7 +1090,7 @@ QLabel {background-color:transparent}
                 <x>0</x>
                 <y>0</y>
                 <width>190</width>
-                <height>191</height>
+                <height>190</height>
                </rect>
               </property>
               <property name="text">

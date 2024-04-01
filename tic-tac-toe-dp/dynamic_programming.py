@@ -4,16 +4,12 @@ import numpy as np
 
 class DP(MDP):
 
-    def __init__(self, agent_mark, gamma = 0.99, epsilon = 1.0e-10, ):
+    def __init__(self, agent_mark, gamma = 0.9, epsilon = 1.0e-10, ):
         
         super().__init__(agent_mark)
 
         self.gamma = gamma
         self.epsilon = epsilon
-        
-        self.states = super().get_possible_states() 
-        self.t_states = super().get_terminal_states()
-        self.actions = super().get_actions()
         
         self.values = {}
         self.initialize_V()
@@ -28,18 +24,12 @@ class DP(MDP):
         #         self.action_values[state] = [0 for a in action]
 
 
-
-
-    def get_action_values(self, status):
-        return self.action_values[status]
-        
-
     def initialize_V(self):
-        for state in self.states:
+        for state in self.possible_states:
             self.values[state] = 0
 
     def initialize_P(self):
-        for state in self.states:
+        for state in self.possible_states:
             self.policy[state] = None
 
 
@@ -58,34 +48,46 @@ class DP(MDP):
             # Terminal State Exception
             e = 0
             delta = 0
-            for state in self.states:
+            for state in self.possible_states:
+                
                 old_delta = delta
+            
                 v = self.values[state]
                 a = self.policy[state] # random action
 
-                if state in self.t_states:
+                if state in self.termination_states:
                     self.values[state] = self.reward_function(state)
                     continue
-
-
-                action_value = 0
-                for s_prime in super().possible_next_states(state, a):  
-                    if s_prime == 1:
-                        action_value = 1
-                    
-                    elif s_prime == 0:
-                        action_value = 0
-                        
-                    
-                    else:
-                        action_value = super().transition_function(state, a, s_prime) * (super().reward_function(state) + self.gamma * self.values[s_prime])  
-                        
-
-                    self.values[state] += action_value
                 
+                
+                s_p_definites = []
+                s_primes = self.possible_next_states(state, a)
+                for s_p in s_primes:
+                    if super().win(s_p) == self.opp_mark:
+                        s_p_definites.append(s_p)
+                
+                s_p_defence = None
+                if super().threat_detector(state, a):
+                    s_p_defence = super().threat_detector(state, a)
+                        
+                action_value = 0
+                for s_prime in super().possible_next_states(state, a):
+                        
+                    if s_p_definites and s_prime in s_p_definites:
+                        action_value += super().reward_function(state) + self.gamma * self.values[s_prime]
+                    
+                    elif s_p_defence and s_p_defence == s_prime:
+                        action_value = super().reward_function(state) + self.gamma * self.values[s_prime]
 
 
-                delta = max(delta, abs(v - self.values[state]))
+                    else:
+                        action_value += super().transition_function(state, a) * (super().reward_function(state) + self.gamma * self.values[s_prime])
+                    
+
+
+                delta = max(delta, abs(v - action_value))
+                self.values[state] = action_value
+                
                 
                 if old_delta < delta:
                     e += 1 
@@ -108,47 +110,56 @@ class DP(MDP):
     def policy_improvement(self): 
         policy_stable = True # stop condition
 
-        for state in self.states:
+        for state in self.possible_states:
  
-            a = self.policy[state] # current action
+            action = self.policy[state] # current action
 
-            if state in self.t_states:
+            if state in self.termination_states:
                 continue
 
             best_value = float("-inf") # initialize value is negative infinite due to handle first comparison    
 
 
             action_value_list = []
-            for action in self.actions[state]: 
+
+            for a in self.actions[state]:
+                s_p_definites = []
+                s_primes = self.possible_next_states(state, a)
+                for s_p in s_primes:
+                    if super().win(s_p) == self.opp_mark:
+                        s_p_definites.append(s_p)
+                    
+                s_p_defence = None
+                if super().threat_detector(state, a):
+                    s_p_defence = super().threat_detector(state, a)
+                            
                 action_value = 0
-                for s_prime in self.possible_next_states(state, action):   
-                    if s_prime == 1:
-                        action_value += 1
-                    elif s_prime == 0:
-                        action_value += 0
+                for s_prime in super().possible_next_states(state, a):
+                    if s_p_definites and s_prime in s_p_definites:
+                        action_value += super().reward_function(state) + self.gamma * self.values[s_prime]
+                        
+                    elif s_p_defence and s_p_defence == s_prime:
+                        action_value = super().reward_function(state) + self.gamma * self.values[s_prime]
+
+
                     else:
-                        action_value += super().transition_function(state, action, s_prime) * (super().reward_function(state) + self.gamma * self.values[s_prime])  
-                
+                        action_value += super().transition_function(state, a) * (super().reward_function(state) + self.gamma * self.values[s_prime]) 
+            
 
                 if action_value > best_value:
                         best_value = action_value 
-                        self.policy[state] = action
+                        self.policy[state] = a
 
                 
                 if action_value % 1 == 0:
                     action_value_list.append(action_value)
                 
                 else: 
-                    action_value_list.append(round(action_value), 2)
+                    action_value_list.append(round(action_value, 2))
                     
-            self.action_values[state] = action_value_list
-                    
+            self.action_values_PI[state] = action_value_list
 
-
-            # when the above loop ends, all actions can be taken for a particular state was evaluated and the best action is selected according to action value's which is calculated informations we get in policy evaluation
-            # however, we had considered a random action in policy evaluation and calculated state values according to this. If we could not satisfied the action we select random and the new best action we get now is equal, THEN WE MUST REPEAT POLICY EVALUATION PROCESS WITH THE NEW BEST ACTION WE GOT.
-
-            if a != self.policy[state]: # Comparision Random Action and Best Action
+            if action != self.policy[state]: # Comparision Random Action and Best Action
                 policy_stable = False 
         
         return policy_stable
@@ -157,10 +168,10 @@ class DP(MDP):
     def policy_iteration(self):
         start_time = time()
     
-        print('Total Possible State:',len(self.states))
-        for s in self.states:
+        print('Total Possible State:',len(self.possible_states))
+        for s in self.possible_states:
             # choose a random action for each state
-            if s not in self.t_states:
+            if s not in self.termination_states:
                 # A random action selection for every single policy
                 self.policy[s] = np.random.choice(self.actions[s])
         
@@ -181,9 +192,13 @@ class DP(MDP):
 
         end_time = time()
 
-        print(f"Policy Iteration process has taken {end_time - start_time} sec.")
+        progress_sec = end_time - start_time
+        progress_min = int(progress_sec / 60)
+        progress_sec = round(progress_sec % 60)
 
-        return self.policy, self.action_values
+        print("Value Iteration has taken {} min {} sec".format(progress_min, progress_sec))
+
+        return self.policy, self.action_values_PI
         
           
 
@@ -211,9 +226,9 @@ class DP(MDP):
         while True:
             print(f'Value Iteration Epoch {epoch}')
             delta = 0
-            for state in self.states:  
+            for state in self.possible_states:  
 
-                if state in self.t_states:
+                if state in self.termination_states:
                     self.values[state] = self.reward_function(state)
                     continue 
 
@@ -224,9 +239,9 @@ class DP(MDP):
                 for action in self.actions[state]:
                     # 3,5,6,7
                     for s_prime in super().possible_next_states(state, action):
-                        if s_prime == 1: a += 1
+                        if s_prime == 1: a = 1
 
-                        elif s_prime == 0: a += 0
+                        elif s_prime == 0: a = 0
                 
                         else: a += super().transition_function(state, action, s_prime) * (super().reward_function(state) + self.gamma * self.values[s_prime])
 
