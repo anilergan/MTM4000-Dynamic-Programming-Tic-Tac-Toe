@@ -19,9 +19,6 @@ class DP(MDP):
 
         self.action_values_PI = {}
         self.action_values_VI = {}
-        # for state, action in self.actions.items():
-        #     if action: 
-        #         self.action_values[state] = [0 for a in action]
 
 
     def initialize_V(self):
@@ -55,33 +52,26 @@ class DP(MDP):
                 v = self.values[state]
                 a = self.policy[state] # random action
 
+
+                # CHECK TERMINATION STATE for draw or lose
                 if state in self.termination_states:
                     self.values[state] = self.reward_function(state)
                     continue
+
+                state_action = list(state).copy()
+                state_action[a] = self.mark
+                state_action = tuple(state_action)
+
+                # CHECK TERMINATION STATE for win  
+                if state_action in self.termination_states:
+                    self.values[state] = self.reward_function(s_a = state_action)
+                    continue
                 
-                
-                s_p_definites = []
-                s_primes = self.possible_next_states(state, a)
-                for s_p in s_primes:
-                    if super().win(s_p) == self.opp_mark:
-                        s_p_definites.append(s_p)
-                
-                s_p_defence = None
-                if super().threat_detector(state, a):
-                    s_p_defence = super().threat_detector(state, a)
-                        
+                         
                 action_value = 0
-                for s_prime in super().possible_next_states(state, a):
-                        
-                    if s_p_definites and s_prime in s_p_definites:
-                        action_value += super().reward_function(state) + self.gamma * self.values[s_prime]
+                for s_prime in super().possible_next_states(state_action):
                     
-                    elif s_p_defence and s_p_defence == s_prime:
-                        action_value = super().reward_function(state) + self.gamma * self.values[s_prime]
-
-
-                    else:
-                        action_value += super().transition_function(state, a) * (super().reward_function(state) + self.gamma * self.values[s_prime])
+                    action_value += super().transition_function(state_action, s_prime) * ((self.gamma * self.values[s_prime]))
                     
 
 
@@ -98,7 +88,7 @@ class DP(MDP):
                     print('     Delta:', delta) 
                     # print('     State: ', state)
 
-            print('Total states not converge:', e)
+            print('   \nTotal states not converge:', e)
             print('  ', '-'*40)      
             
             if delta < self.epsilon: # until delta < epsilon 
@@ -114,36 +104,34 @@ class DP(MDP):
  
             action = self.policy[state] # current action
 
-            if state in self.termination_states:
-                continue
-
-            best_value = float("-inf") # initialize value is negative infinite due to handle first comparison    
-
+            best_value = float("-inf") # initialize value is negative infinite due to handle first comparison 
 
             action_value_list = []
+            # CHECK TERMINATION STATE for draw or lose
+            if state in self.termination_states:
+                continue   
 
             for a in self.actions[state]:
-                s_p_definites = []
-                s_primes = self.possible_next_states(state, a)
-                for s_p in s_primes:
-                    if super().win(s_p) == self.opp_mark:
-                        s_p_definites.append(s_p)
-                    
-                s_p_defence = None
-                if super().threat_detector(state, a):
-                    s_p_defence = super().threat_detector(state, a)
-                            
+
+                state_action = list(state).copy()
+                state_action[a] = self.mark
+                state_action = tuple(state_action)
+
+                # CHECK TERMINATION STATE for win
+                if state_action in self.termination_states:
+                    action_value = 1
+                    self.policy[state] = a
+
+                    if action_value % 1 == 0:
+                        action_value_list.append(action_value)
+                
+                    else: 
+                        action_value_list.append(round(action_value, 2))
+
+
                 action_value = 0
-                for s_prime in super().possible_next_states(state, a):
-                    if s_p_definites and s_prime in s_p_definites:
-                        action_value += super().reward_function(state) + self.gamma * self.values[s_prime]
-                        
-                    elif s_p_defence and s_p_defence == s_prime:
-                        action_value = super().reward_function(state) + self.gamma * self.values[s_prime]
-
-
-                    else:
-                        action_value += super().transition_function(state, a) * (super().reward_function(state) + self.gamma * self.values[s_prime]) 
+                for s_prime in super().possible_next_states(state_action):
+                    action_value += super().transition_function(state_action, s_prime) * (self.gamma * self.values[s_prime])
             
 
                 if action_value > best_value:
@@ -196,7 +184,7 @@ class DP(MDP):
         progress_min = int(progress_sec / 60)
         progress_sec = round(progress_sec % 60)
 
-        print("Value Iteration has taken {} min {} sec".format(progress_min, progress_sec))
+        print("Policy Iteration has taken {} min {} sec".format(progress_min, progress_sec))
 
         return self.policy, self.action_values_PI
         
@@ -229,7 +217,7 @@ class DP(MDP):
             for state in self.possible_states:  
 
                 if state in self.termination_states:
-                    self.values[state] = self.reward_function(state)
+                    self.values[state] = self.reward_function(state, a)
                     continue 
 
                 v = self.values[state]

@@ -1,7 +1,7 @@
 from dynamic_programming import DP
 import json
 
-
+# Policy Iteration
 def define_an_agent_PI(mark):
     if mark == 'X': mark_number = 1
     elif mark == 'O': mark_number = 2
@@ -32,6 +32,7 @@ def define_an_agent_PI(mark):
     print("There is a new messeage from the master: 'I KNOW KUNG-FU'\n")
 
 
+# Value Iteration
 def define_an_agent_VI(mark):
     if mark == 'X': mark_number = 1
     elif mark == 'O': mark_number = 2

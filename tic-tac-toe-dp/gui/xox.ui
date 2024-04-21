@@ -113,7 +113,7 @@ background-color: rgb(248, 249, 249);
        <enum>QFrame::Raised</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page_1_menu">
        <property name="layoutDirection">

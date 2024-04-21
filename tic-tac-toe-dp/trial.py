@@ -95,14 +95,6 @@ Ui_obj = Ui()
 # for key, val in action_dic.items():
 #     print(key, val)
 
-class Merhaba():
-    def __init__(self):
-        print('merhaba')
-
-mer = Merhaba()
-
-if type(mer) == Merhaba:
-    print('hey bu merhaba')
 
 
 # naive_agent_object = NaiveAgent()
@@ -139,3 +131,10 @@ if type(mer) == Merhaba:
 
 
 
+a = 10
+# b = None
+
+if a == b:
+    print('hey')
+
+else: print('None')

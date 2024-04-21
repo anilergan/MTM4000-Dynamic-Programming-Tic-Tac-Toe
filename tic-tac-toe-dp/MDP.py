@@ -105,19 +105,42 @@ class MDP(play_tic_tac_toe):
 
 
 
-    def transition_function(self, state, a):
+    def transition_function(self, state_action, s_prime):
         """
         The probability of each action that can be taken for a given state
         """
+        s_primes = self.possible_next_states(state_action)
+        s_p_defence = self.threat_detector(state_action)
+
+
+        # 1) If opponent will win the game, it will be happen
+        s_p_win = None
+        for s_p in s_primes:
+            if self.reward_function(state=s_p) == -1:
+                s_p_win = s_p
         
-
-        return 1 / (len(self.actions[state]) - 1)
-
-
-    def threat_detector(self, state, a):
-        s_a = list(state).copy()
-        s_a[a] = self.mark
+        if s_p_win: 
+            if s_p_win == s_prime:
+                return 1
+            
+            elif s_p_win != s_prime:
+                return 0
         
+        # 2) If Agent have a threat to win the game in next state, opponent will try to avoid it no matter what.
+        elif s_p_defence == s_prime: return 1
+        else: return 0
+        
+        # 3) Otherwise
+        try: 
+            return 1 / state_action.count(0)
+        except:
+            raise ZeroDivisionError('state_action lenght is 9, it must have skipped in the condition termination_states!\nstate_action:\n{}'.format(np.array(state_action).reshape(3,3)))
+
+
+    def threat_detector(self, s_a):
+        s_a = list(s_a)
+        opp_definite_action = None
+
         t_s = s_a.copy()
         t_s_actions = []
         for index, cell in enumerate(t_s):
@@ -126,7 +149,7 @@ class MDP(play_tic_tac_toe):
         
         opp_definite_action = None
         for action in t_s_actions:
-            t_s_a = list(t_s).copy()
+            t_s_a = t_s.copy()
             t_s_a[action] = self.mark
 
             if super().win(t_s_a):
@@ -137,56 +160,12 @@ class MDP(play_tic_tac_toe):
             return tuple(s_a)
 
 
-        
-        
 
 
-
-    def opponents_fury(self, s_a):
-        """
-        If opponent has a action which avoids your next action that wins the game, opponent takes that action definetly.
-        """
-        s_a_actions = []
-        for index, cell in enumerate(s_a):
-            if cell == 0:
-                s_a_actions.append(index)
-
-
-        for action in s_a_actions:
-            s_prime = list(s_a).copy()
-            s_prime[action] = self.opp_mark
-            
-            s_prime_action = s_prime.copy()
-        
-            s_prime_acions_list = []
-            for index, cell in enumerate(s_prime_action):
-                if cell == 0: s_prime_acions_list.append(index)
-            
-            opp_fury = None
-            for action in s_prime_acions_list:
-                s_prime_action[action] = self.mark
-                if super().win(s_prime_action): # If agent wins
-                    opp_fury = action
-                    break
-                
-            if opp_fury:
-                for action in s_a_actions:
-                    if action == opp_fury:
-                        s_a[action] = self.opp_mark
-                        return s_a # S Prime
-                
-
-
-
-
-    def possible_next_states(self, state, action):
+    def possible_next_states(self, s_a):
         """
         This is the function returns very next possible states as tuple
         """
-
-        s_a = list(state) 
-        
-        s_a[action] = self.mark 
 
         if self.win(s_a):
             return []
@@ -194,23 +173,27 @@ class MDP(play_tic_tac_toe):
         s_primes = []
         for index, cell in enumerate(s_a):
             if cell == 0:
-                s_prime = s_a.copy()
+                s_prime = list(s_a).copy()
                 s_prime[index] = self.opp_mark
                 s_primes.append(tuple(s_prime))
         
-        return s_primes
+        return tuple(s_primes)
         
 
 
-    def reward_function(self, state):
+    def reward_function(self, state=None, s_a=None):
         """
         This function takes a state and returns the reward of the state
         """
-        if super().win(state) == 1 and self.mark == 1: return 1
-        elif super().win(state) == 2 and self.mark == 1: return -1
-        elif super().win(state) == 1 and self.mark == 2: return -1
-        elif super().win(state) == 2 and self.mark == 2: return 1
-        else: return 0
+        if s_a:
+            if super().win(s_a): return 1
+            else: return 0
+        elif state:
+            if super().win(state): return -1
+            else: return 0
+
+        
+        
 
 
     def get_possible_states(self):

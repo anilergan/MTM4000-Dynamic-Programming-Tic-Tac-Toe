@@ -70,7 +70,7 @@ class play_tic_tac_toe(tic_tac_toe):
         # Self play
 
         if np.any(board is None):
-            board = self.game_matrix
+            board = super().get_game_matrix()
 
         else: 
             try: board = np.array(board).reshape(3,3)
