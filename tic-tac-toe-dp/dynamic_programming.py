@@ -4,7 +4,7 @@ import numpy as np
 
 class DP(MDP):
 
-    def __init__(self, agent_mark, gamma = 0.9, epsilon = 1.0e-10, ):
+    def __init__(self, agent_mark, gamma = 0.9, epsilon = 1.0e-10):
         
         super().__init__(agent_mark)
 
@@ -46,17 +46,16 @@ class DP(MDP):
             e = 0
             delta = 0
             for state in self.possible_states:
-                
-                old_delta = delta
-            
-                v = self.values[state]
-                a = self.policy[state] # random action
-
 
                 # CHECK TERMINATION STATE for draw or lose
                 if state in self.termination_states:
                     self.values[state] = self.reward_function(state)
                     continue
+                
+                old_delta = delta
+            
+                v = self.values[state]
+                a = self.policy[state] # random action
 
                 state_action = list(state).copy()
                 state_action[a] = self.mark
@@ -248,47 +247,30 @@ class DP(MDP):
                 # Sort the action values as descending and pick the first index (0)
                 sorted_action_values = sorted(action_values.items(), key = lambda dic: dic[1], reverse=True)
 
+                # Not sorted_action_values is a list which contains key/value couple as a lists such that [[1,0.4566773], [4, 0.9], [7, 0]]
                 self.values[state] = sorted_action_values[0][1]
                 self.policy[state] = sorted_action_values[0][0]
 
+                for value in action_values.values():
+                    if value % 1 == 0:
+                        action_value_list.append(value)
+                    else: 
+                        action_value_list.append(round(value, 2))
+                
+
+                self.action_values_VI[state] = action_value_list
+                
                 delta = max(delta, abs(v - self.values[state]))  
-
-
             
             if delta < self.epsilon: 
-                self.policy = {key: value for key, value in self.policy.items() if value is not None}
-                return self.policy
-"""       
-                    # 3,5,6,7
-                    for s_prime in super().possible_next_states(state, action):
-                        if s_prime == 1: a = 1
+                print(f'  Delta: {delta}') 
+                print(f'   {delta} < {self.epsilon}')
+                break
 
-                        elif s_prime == 0: a = 0
-                
-                        else: a += super().transition_function(state, action, s_prime) * (super().reward_function(state) + self.gamma * self.values[s_prime])
-
-                    action_values_dict[action] = a
-                
-                max_value = float("-inf")
-                max_value_action = None
-                for action, value in action_values_dict.items():
-                        if value > max_value: 
-                            max_value = value
-                            max_value_action = action
-                
-                self.action_values_VI[state] = list(action_values_dict.values())
-                
-                self.policy[state] = max_value_action
-                self.values[state] = max_value
-
-                delta  = max(delta, abs(v - self.values[state]))
-
-            if delta < self.epsilon: break
             else: 
+                print(f'  Delta: {delta}') 
                 epoch += 1
-                print(f'  Delta: {delta}')
-        
-        self.policy = {key: value for key, value in self.policy.items() if value is not None}
+                
 
         end_time = time()
 
@@ -298,7 +280,9 @@ class DP(MDP):
 
         print("Value Iteration has taken {} min {} sec".format(progress_min, progress_sec))
 
+        self.policy = {key: value for key, value in self.policy.items() if value is not None}
+
         return self.policy, self.action_values_VI
-         
-"""
+
+            
 

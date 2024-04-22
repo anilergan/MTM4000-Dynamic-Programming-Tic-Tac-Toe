@@ -120,7 +120,7 @@ class AppWindow(QMainWindow, PlayTicTacToe):
         self.mode = 'hard_mode'
 
         from play_with_the_master import the_master as TheMaster
-        self.agent = TheMaster(dp_method='policy_iteration')
+        self.agent = TheMaster(dp_method='value_iteration')
 
         if self.user_mark == 2: self.agent_plays()
 

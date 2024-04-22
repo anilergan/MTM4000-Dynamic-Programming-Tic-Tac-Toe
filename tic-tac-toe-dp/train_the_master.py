@@ -63,5 +63,5 @@ def define_an_agent_VI(mark):
     print("There is a new messeage from the master: 'I KNOW KUNG-FU'\n")
 
 
-define_an_agent_PI(mark='X') 
-define_an_agent_PI(mark='O')
+define_an_agent_VI(mark='X') 
+define_an_agent_VI(mark='O')

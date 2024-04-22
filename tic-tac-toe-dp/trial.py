@@ -131,12 +131,9 @@ Ui_obj = Ui()
 
 
 
-student_tuples = {
-    1: 1,
-    2: 12,
-    3: 9
-}
+num = 0.0
+ii = num%1
 
-k = sorted(student_tuples.items(), key=lambda x: x[1], reverse=True)
-
-print(k[0][1])
+if ii ==0:
+    print('Yes')
+print(num%1)
