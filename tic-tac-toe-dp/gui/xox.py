@@ -39,8 +39,6 @@ class Ui_MainWindow(object):
 "}")
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.stackedwidget_content = QtWidgets.QStackedWidget(parent=self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.MinimumExpanding, QtWidgets.QSizePolicy.Policy.MinimumExpanding)
@@ -88,7 +86,7 @@ class Ui_MainWindow(object):
 "QGroupBox {\n"
 "color: rgb(12,16,25);\n"
 "background-color: rgb(229, 231, 233);\n"
-"    font: 700 16pt \"Arial\";\n"
+"font: 700 16pt \"Arial\";\n"
 "border:  2px solid rgb(12,16,25);\n"
 "border-radius: 25px;\n"
 "margin: 10px 0 0 0;\n"
@@ -149,7 +147,14 @@ class Ui_MainWindow(object):
         self.button_spm.setStyleSheet("color: rgb(20,124,236);")
         self.button_spm.setObjectName("button_spm")
         self.verticalLayout_2.addWidget(self.button_spm, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
-        self.groupBox = QtWidgets.QGroupBox(parent=self.page_1_menu)
+        self.stackedwidget_pac = QtWidgets.QStackedWidget(parent=self.page_1_menu)
+        self.stackedwidget_pac.setMinimumSize(QtCore.QSize(0, 280))
+        self.stackedwidget_pac.setMaximumSize(QtCore.QSize(16777215, 280))
+        self.stackedwidget_pac.setObjectName("stackedwidget_pac")
+        self.page_pac1 = QtWidgets.QWidget()
+        self.page_pac1.setObjectName("page_pac1")
+        self.groupBox = QtWidgets.QGroupBox(parent=self.page_pac1)
+        self.groupBox.setGeometry(QtCore.QRect(210, 0, 350, 275))
         self.groupBox.setMinimumSize(QtCore.QSize(350, 275))
         self.groupBox.setMaximumSize(QtCore.QSize(350, 275))
         self.groupBox.setStyleSheet("")
@@ -267,7 +272,162 @@ class Ui_MainWindow(object):
         self.button_hard_mode.setStyleSheet("color: rgb(20,124,236);")
         self.button_hard_mode.setObjectName("button_hard_mode")
         self.verticalLayout_3.addWidget(self.button_hard_mode, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
-        self.verticalLayout_2.addWidget(self.groupBox, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
+        self.stackedwidget_pac.addWidget(self.page_pac1)
+        self.page_pac2 = QtWidgets.QWidget()
+        self.page_pac2.setObjectName("page_pac2")
+        self.frame_hard_mode_sections = QtWidgets.QFrame(parent=self.page_pac2)
+        self.frame_hard_mode_sections.setEnabled(True)
+        self.frame_hard_mode_sections.setGeometry(QtCore.QRect(210, 9, 350, 266))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_hard_mode_sections.sizePolicy().hasHeightForWidth())
+        self.frame_hard_mode_sections.setSizePolicy(sizePolicy)
+        self.frame_hard_mode_sections.setMinimumSize(QtCore.QSize(350, 266))
+        self.frame_hard_mode_sections.setMaximumSize(QtCore.QSize(350, 266))
+        self.frame_hard_mode_sections.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.frame_hard_mode_sections.setToolTipDuration(-1)
+        self.frame_hard_mode_sections.setStyleSheet("#frame_hard_mode_sections {\n"
+"\n"
+"background-color:  rgba(229, 231, 233, 200);\n"
+"border-radius: 25px;\n"
+"}\n"
+"\n"
+"QPushButton{\n"
+"color: rgb(20,124,236);\n"
+"font: 700 20pt \"Arial\";\n"
+"background-color: rgba(20,124,236, 10);\n"
+"border: 2px solid rgb(202, 207, 210);\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#button_hms_back{\n"
+"color: rgb(233,20,76);\n"
+"background-color: rgba(233,20,76,10);\n"
+"border-bottom-left-radius: 0px;\n"
+"border-bottom-right-radius: 0px;\n"
+"border-bottom: none;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#button_hms_PI{\n"
+"border-top-left-radius: 0px;\n"
+"border-top-right-radius: 0px;\n"
+"border-bottom-right-radius: 0px;\n"
+"border-top: none;\n"
+"border-right: none;\n"
+"}\n"
+"\n"
+"#button_hms_VI{\n"
+"border-top-left-radius: 0px;\n"
+"border-top-right-radius: 0px;\n"
+"border-bottom-left-radius: 0px;\n"
+"border-top: none;\n"
+"border-left: none;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: rgba(20,124,236, 50);\n"
+"border:2px solid rgb(20,124,236);\n"
+"}\n"
+"\n"
+"#button_hms_back::hover{\n"
+"background-color: rgba(233,20,76,50);\n"
+"border: 2px solid rgb(233,20,76);\n"
+"}\n"
+"")
+        self.frame_hard_mode_sections.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_hard_mode_sections.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_hard_mode_sections.setObjectName("frame_hard_mode_sections")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.frame_hard_mode_sections)
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_6.setSpacing(0)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.frame_hms_back = QtWidgets.QFrame(parent=self.frame_hard_mode_sections)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Ignored, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_hms_back.sizePolicy().hasHeightForWidth())
+        self.frame_hms_back.setSizePolicy(sizePolicy)
+        self.frame_hms_back.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_hms_back.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_hms_back.setObjectName("frame_hms_back")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.frame_hms_back)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.button_hms_back = QtWidgets.QPushButton(parent=self.frame_hms_back)
+        self.button_hms_back.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.button_hms_back.sizePolicy().hasHeightForWidth())
+        self.button_hms_back.setSizePolicy(sizePolicy)
+        self.button_hms_back.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.button_hms_back.setStyleSheet("")
+        self.button_hms_back.setObjectName("button_hms_back")
+        self.horizontalLayout_3.addWidget(self.button_hms_back)
+        self.verticalLayout_6.addWidget(self.frame_hms_back)
+        self.frame_hms_sections_inner = QtWidgets.QFrame(parent=self.frame_hard_mode_sections)
+        self.frame_hms_sections_inner.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_hms_sections_inner.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_hms_sections_inner.setObjectName("frame_hms_sections_inner")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame_hms_sections_inner)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setSpacing(2)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.button_hms_PI = QtWidgets.QPushButton(parent=self.frame_hms_sections_inner)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.button_hms_PI.sizePolicy().hasHeightForWidth())
+        self.button_hms_PI.setSizePolicy(sizePolicy)
+        self.button_hms_PI.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.button_hms_PI.setObjectName("button_hms_PI")
+        self.horizontalLayout_2.addWidget(self.button_hms_PI)
+        self.button_hms_VI = QtWidgets.QPushButton(parent=self.frame_hms_sections_inner)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.button_hms_VI.sizePolicy().hasHeightForWidth())
+        self.button_hms_VI.setSizePolicy(sizePolicy)
+        self.button_hms_VI.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.button_hms_VI.setObjectName("button_hms_VI")
+        self.horizontalLayout_2.addWidget(self.button_hms_VI)
+        self.verticalLayout_6.addWidget(self.frame_hms_sections_inner)
+        self.verticalLayout_6.setStretch(0, 35)
+        self.verticalLayout_6.setStretch(1, 65)
+        self.groupBox_2 = QtWidgets.QGroupBox(parent=self.page_pac2)
+        self.groupBox_2.setGeometry(QtCore.QRect(210, 0, 350, 275))
+        self.groupBox_2.setMinimumSize(QtCore.QSize(350, 275))
+        self.groupBox_2.setMaximumSize(QtCore.QSize(350, 275))
+        self.groupBox_2.setStyleSheet("")
+        self.groupBox_2.setTitle("")
+        self.groupBox_2.setObjectName("groupBox_2")
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_7.setContentsMargins(0, 40, 0, 20)
+        self.verticalLayout_7.setSpacing(5)
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_7.addItem(spacerItem2)
+        self.button_hard_mode_2 = QtWidgets.QPushButton(parent=self.groupBox_2)
+        self.button_hard_mode_2.setEnabled(False)
+        self.button_hard_mode_2.setMinimumSize(QtCore.QSize(180, 50))
+        self.button_hard_mode_2.setMaximumSize(QtCore.QSize(180, 50))
+        self.button_hard_mode_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.button_hard_mode_2.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.button_hard_mode_2.setStyleSheet("color: rgb(20,124,236);\n"
+"border: 2px solid rgb(20,124,236);\n"
+"background-color: rgba(20,124,236, 20);")
+        self.button_hard_mode_2.setObjectName("button_hard_mode_2")
+        self.verticalLayout_7.addWidget(self.button_hard_mode_2, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
+        self.groupBox_2.raise_()
+        self.frame_hard_mode_sections.raise_()
+        self.stackedwidget_pac.addWidget(self.page_pac2)
+        self.verticalLayout_2.addWidget(self.stackedwidget_pac)
         self.button_exit = QtWidgets.QPushButton(parent=self.page_1_menu)
         self.button_exit.setMinimumSize(QtCore.QSize(90, 50))
         self.button_exit.setMaximumSize(QtCore.QSize(90, 50))
@@ -284,9 +444,9 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(233,20,76)\n"
 "}")
         self.button_exit.setObjectName("button_exit")
-        self.verticalLayout_2.addWidget(self.button_exit, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem2)
+        self.verticalLayout_2.addWidget(self.button_exit, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem3)
         self.by_anil_ergan = QtWidgets.QLabel(parent=self.page_1_menu)
         self.by_anil_ergan.setStyleSheet("font: italic 8pt \"Arial\";")
         self.by_anil_ergan.setObjectName("by_anil_ergan")
@@ -520,8 +680,8 @@ class Ui_MainWindow(object):
         self.value_cell_22.setObjectName("value_cell_22")
         self.gridLayout.addWidget(self.frame_cell_22, 1, 3, 1, 1)
         self.verticalLayout_4.addWidget(self.frame_game, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.verticalLayout_4.addItem(spacerItem3)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_4.addItem(spacerItem4)
         self.frame_menu = QtWidgets.QFrame(parent=self.page_2_game)
         self.frame_menu.setMinimumSize(QtCore.QSize(600, 120))
         self.frame_menu.setMaximumSize(QtCore.QSize(600, 120))
@@ -569,8 +729,8 @@ class Ui_MainWindow(object):
         self.button_menu.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.button_menu.setObjectName("button_menu")
         self.horizontalLayout.addWidget(self.button_menu)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout.addItem(spacerItem4)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout.addItem(spacerItem5)
         self.frame_announce = QtWidgets.QFrame(parent=self.frame_menu)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -639,7 +799,8 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedwidget_content.setCurrentIndex(1)
+        self.stackedwidget_content.setCurrentIndex(0)
+        self.stackedwidget_pac.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -651,6 +812,12 @@ class Ui_MainWindow(object):
         self.text_mark_selection.setText(_translate("MainWindow", "Mark Selection"))
         self.button_easy_mode.setText(_translate("MainWindow", "Easy Mode"))
         self.button_hard_mode.setText(_translate("MainWindow", "Hard Mode"))
+        self.button_hms_back.setText(_translate("MainWindow", "Back"))
+        self.button_hms_PI.setText(_translate("MainWindow", "Policy\n"
+"Iteration"))
+        self.button_hms_VI.setText(_translate("MainWindow", "Value\n"
+"Iteration"))
+        self.button_hard_mode_2.setText(_translate("MainWindow", "Hard Mode"))
         self.button_exit.setText(_translate("MainWindow", "Exit"))
         self.by_anil_ergan.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">by Anıl ERGAN</p></body></html>"))
         self.button_reset.setText(_translate("MainWindow", "Reset"))

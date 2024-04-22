@@ -26,15 +26,20 @@ class AppWindow(QMainWindow, PlayTicTacToe):
 
         # Login Page Buttons
         self.ui.button_spm.clicked.connect(self.func_button_spm)
-        self.ui.button_easy_mode.clicked.connect(lambda: self.play_against_computer(self.func_button_easy_mode))
-        self.ui.button_hard_mode.clicked.connect(lambda: self.play_against_computer(self.func_button_hard_mode))
+        self.ui.button_easy_mode.clicked.connect(lambda: self.play_against_computer(self.func_button_easy_mode, 'easy_mode'))
+
+        self.ui.button_hard_mode.clicked.connect(self.func_button_hard_mode)
+        # ------------------- Hard Mode Selection -------------------
+        self.ui.button_hms_back.clicked.connect(self.func_button_hms_back)
+        self.ui.button_hms_PI.clicked.connect(lambda: self.play_against_computer(self.func_button_hard_mode_section, 'policy_iteration'))
+        self.ui.button_hms_VI.clicked.connect(lambda: self.play_against_computer(self.func_button_hard_mode_section, 'value_iteration'))
         self.ui.button_exit.clicked.connect(self.func_button_exit)
 
-        # Game Page Buttons
+        # ------------------- Game Page Buttons -------------------
         self.ui.button_menu.clicked.connect(self.func_button_menu)
         self.ui.button_reset.clicked.connect(self.func_button_reset)
 
-        # Game Cells
+        # ------------------- Game Cells -------------------
         self.ui.mark_11.clicked.connect(lambda: self.func_mark('11'))
         self.ui.mark_12.clicked.connect(lambda: self.func_mark('12'))
         self.ui.mark_13.clicked.connect(lambda: self.func_mark('13'))
@@ -80,12 +85,13 @@ class AppWindow(QMainWindow, PlayTicTacToe):
         self.ui.stackedwidget_content.setCurrentIndex(1)                 
 
         
-    def play_against_computer(self, func):
+    def play_against_computer(self, func, mode):
 
         if not self.check_mark_selection():
             self.mark_selection_warning(undo = False)
             return
         
+
         self.user_mark = self.check_mark_selection()
 
 
@@ -101,12 +107,12 @@ class AppWindow(QMainWindow, PlayTicTacToe):
         
         self.reset_game_page()
 
-        func()
+        func(mode)
         
 
-    def func_button_easy_mode(self):
+    def func_button_easy_mode(self, mode):
 
-        self.mode = 'easy_mode'
+        self.mode = mode
         
         from play_with_naive_agent import naive_agent as NaiveAgent
         self.agent = NaiveAgent()
@@ -114,15 +120,25 @@ class AppWindow(QMainWindow, PlayTicTacToe):
         if self.user_mark == 2: self.agent_plays()
         
 
-
     def func_button_hard_mode(self):
+        if not self.check_mark_selection():
+            self.mark_selection_warning(undo = False)
+            return
+        
+        self.ui.stackedwidget_pac.setCurrentIndex(1)
 
-        self.mode = 'hard_mode'
+    def func_button_hms_back(self):
+        self.ui.stackedwidget_pac.setCurrentIndex(0)
+
+
+    def func_button_hard_mode_section(self, mode):
+
+        self.mode = mode
 
         from play_with_the_master import the_master as TheMaster
-        self.agent = TheMaster(dp_method='value_iteration')
+        self.agent = TheMaster(dp_method=self.mode)
 
-        if self.user_mark == 2: self.agent_plays()
+        if self.user_mark == 2: self.agent_plays() 
 
 
     
@@ -134,6 +150,7 @@ class AppWindow(QMainWindow, PlayTicTacToe):
     def func_button_menu(self):
         self.reset_game_page()
         self.mark_selection_warning(undo = True)
+        self.ui.stackedwidget_pac.setCurrentIndex(0)
         self.ui.stackedwidget_content.setCurrentIndex(0)
 
     
@@ -144,25 +161,13 @@ class AppWindow(QMainWindow, PlayTicTacToe):
         elif self.mode == 'easy_mode':
             self.play_against_computer(self.func_button_easy_mode)
 
-        elif self.mode == 'hard_mode':
-            self.play_against_computer(self.func_button_hard_mode)
+        elif self.mode == 'policy_iteration' or self.mode == 'value_iteration':
+            self.play_against_computer(self.func_button_hard_mode_section, self.mode)
         
 
-        # # If it is self-play game:
-        # try: self.move_turn
-        # except AttributeError: pass
-        # else: 
-        #     self.move_turn = 0
-
-        # self.reset_game_page()
-
-        # if self.user_mark == 2: self.agent_plays()
-
-
-    # ---------------------------------------- 
 
     
-    # Support Function -----------------------
+    # Support Functions -----------------------
 
     def mark_selection_warning(self, undo):
         if not undo:
