@@ -131,10 +131,12 @@ Ui_obj = Ui()
 
 
 
-a = 10
-# b = None
+student_tuples = {
+    1: 1,
+    2: 12,
+    3: 9
+}
 
-if a == b:
-    print('hey')
+k = sorted(student_tuples.items(), key=lambda x: x[1], reverse=True)
 
-else: print('None')
+print(k[0][1])

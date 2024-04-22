@@ -206,25 +206,59 @@ class DP(MDP):
         until Δ < 0
 
         Output a deterministic policy, π ≈ π* such that
-            π(s) 0 argmax[a](∑[s',r] p(s', r|s, a)[r + γ V(s')])
+            π(s) = argmax[a](∑[s',r] p(s', r|s, a)[r + γ V(s')])
         """
+
+
         start_time = time()
 
         epoch = 0
         while True:
             print(f'Value Iteration Epoch {epoch}')
             delta = 0
-            for state in self.possible_states:  
+            for state in self.possible_states:
 
+                # CHECK TERMINATION STATE for draw or lose
                 if state in self.termination_states:
-                    self.values[state] = self.reward_function(state, a)
-                    continue 
+                    self.values[state] = self.reward_function(state)
+                    continue
 
-                v = self.values[state]
-                
-                action_values_dict = {}
-                a = 0
-                for action in self.actions[state]:
+                v = self.values[state]  
+                action_value_list = []
+
+                # All actions for state, no random action (It's one of approximation that distinguishes PI and VI)
+                action_values = {}
+                for a in self.actions[state]:
+                    state_action = list(state).copy()
+                    state_action[a] = self.mark
+                    state_action = tuple(state_action)
+
+                    # CHECK TERMINATION STATE for win  
+                    if state_action in self.termination_states:
+                        action_values[a] = self.reward_function(s_a = state_action)
+                        continue
+                    
+                    action_value = 0
+                    for s_prime in super().possible_next_states(state_action):
+
+                        action_value += super().transition_function(state_action, s_prime) * ((self.gamma * self.values[s_prime]))
+                    
+                    action_values[a] = action_value
+                    
+                # Sort the action values as descending and pick the first index (0)
+                sorted_action_values = sorted(action_values.items(), key = lambda dic: dic[1], reverse=True)
+
+                self.values[state] = sorted_action_values[0][1]
+                self.policy[state] = sorted_action_values[0][0]
+
+                delta = max(delta, abs(v - self.values[state]))  
+
+
+            
+            if delta < self.epsilon: 
+                self.policy = {key: value for key, value in self.policy.items() if value is not None}
+                return self.policy
+"""       
                     # 3,5,6,7
                     for s_prime in super().possible_next_states(state, action):
                         if s_prime == 1: a = 1
@@ -266,5 +300,5 @@ class DP(MDP):
 
         return self.policy, self.action_values_VI
          
-
+"""
 
