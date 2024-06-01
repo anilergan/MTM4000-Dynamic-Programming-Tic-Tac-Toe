@@ -391,8 +391,7 @@ class AppWindow(QMainWindow, PlayTicTacToe):
         row, col = list(cell)
         row, col = int(row), int(col)
 
-        try: self.move_turn
-        except AttributeError: # This means it's game against computer
+        if not self.mode == 'spm':
 
             if not agent: # This means func_mark called by USER
                 if self.agent.game_matrix[row-1, col-1]: return
